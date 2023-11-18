@@ -7,6 +7,7 @@ import { ScrollContainer } from "react-indiana-drag-scroll";
 import RecommemdProduct from "../components/main/RecommendList";
 import Arrow from "../assets/images/rightArrow.png";
 import { getFeaturedProduct } from "../librarys/store-api";
+import { getMyCreditTotal } from "../librarys/credit-api.js";
 import { useEffect } from "react";
 import Poster from "../assets/images/poster.png";
 
@@ -161,6 +162,17 @@ const Main = () => {
   const [categoryId, setCategoryId] = useState();
   const [showModal, setShowModal] = useState(true);
 
+  const [creditTotal, setCreditTotal] = useState(0); 
+
+  useEffect(() => {
+    (async () => {
+      const creditAmount = await getMyCreditTotal();
+      if (creditAmount !== null) {
+        setCreditTotal(creditAmount);
+      }
+    })();
+  }, []); 
+
   const recentFilteredProducts =
     categoryId !== undefined
       ? recentItems.filter((product) => product.category === categoryId)
@@ -209,7 +221,7 @@ const Main = () => {
           <TextContainer>
             <HeadText>지금 있는 크레딧</HeadText>
             <CreditAmountContainer>
-              <CreditAmount>7,740</CreditAmount>
+            <CreditAmount>{creditTotal.toLocaleString()}</CreditAmount> 
               <CreditCurrency>원</CreditCurrency>
             </CreditAmountContainer>
           </TextContainer>

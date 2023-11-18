@@ -21,9 +21,12 @@ export async function _userLogin(id, password) {
 }
 
 export async function userLogin(id, password) {
-  return _userLogin(id, password);
+  const userData = await _userLogin(id, password);
+  if (userData) {
+    localStorage.setItem('accessToken', userData.access_token); 
+  }
+  return userData;
 }
-
 export async function registerUser(mid, name, password, phone) {
   try {
     const response = await getSpringAxios.post("join", {
