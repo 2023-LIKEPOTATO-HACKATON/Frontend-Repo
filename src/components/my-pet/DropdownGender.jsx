@@ -9,7 +9,7 @@ const DropdownContainer = styled.div`
   list-style-type: none;
   padding: 10px 0;
   font-size: 12px;
-  margin-right:10px;
+  margin-right: 10px;
   font-family: Nanum Gothic;
 `;
 
@@ -18,7 +18,7 @@ const DropdownList = styled.li`
   padding: 6px 16px;
   cursor: pointer;
   width: 100%;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 16px;
@@ -32,13 +32,13 @@ const SizeOptions = [
   { id: 3, SpeciesName: "여자(중성화)" },
 ];
 
-const DropdownGender = ({ onSelect }) => { 
+const DropdownGender = ({ onSelect }) => {
   return (
     <DropdownContainer>
       {SizeOptions.map((option) => (
         <DropdownList
           key={option.id}
-          onClick={() => onSelect(option.SpeciesName)} 
+          onClick={() => onSelect(option.SpeciesName)}
         >
           {option.SpeciesName}
         </DropdownList>
@@ -48,8 +48,7 @@ const DropdownGender = ({ onSelect }) => {
 };
 
 DropdownGender.propTypes = {
-  onSelect: PropTypes.func.isRequired, 
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default DropdownGender;
-

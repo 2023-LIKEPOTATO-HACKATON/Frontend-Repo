@@ -26,6 +26,14 @@ import DetailPage from "./pages/store/DetailPage.jsx";
 import HeaderPage from "./pages/HeaderPage.jsx";
 import Main from "./pages/Main.jsx";
 import "./App.scss";
+import MyCreditPage from "./pages/MyCreditPage.jsx";
+import TakePicturePage from "./pages/TakePicturePage.jsx";
+import TakePictureCompelete from "./pages/TakePictureCompelete.jsx";
+import DoPurchase from "./pages/DoPurchase.jsx";
+import CompeletePurchase from "./pages/CompeletePurchase.jsx";
+import RequestDetail from "./pages/LoginSignup/RequestDetail.jsx";
+import AdminCheckRequest from "./pages/AdminCheckRequest.jsx";
+import AdminDetailRequest from "./pages/AdminDetailRequest.jsx";
 
 const Container = styled.div`
   background-color: transparent;
@@ -43,6 +51,9 @@ const routerList = [
   { path: "/login", element: <LoginPage /> },
   { path: "/signup", element: <SignupPage /> },
   { path: "/compelete", element: <SignCompelete /> },
+  { path: "/mycredit", element: <MyCreditPage /> },
+  { path: "/takephoto", element: <TakePicturePage /> },
+  { path: "/compeleteupload", element: <TakePictureCompelete /> },
   { path: "/profile", element: <UserProfile />, role: 1 },
   {
     path: "/admin/store",
@@ -78,6 +89,15 @@ const routerList = [
   { path: "/changepw", element: <ChangeUserPW />, role: 1 },
   { path: "/checkdelivery", element: <CheckDelivery />, role: 1 },
   { path: "/productDetail/:id", element: <ProductDetail />, role: 1 },
+  { path: "/purchase/:id", element: <DoPurchase />, role: 1 },
+  { path: "/compeletepurchase/:id", element: <CompeletePurchase />, role: 1 },
+  { path: "/requestdetail/:requestId", element: <RequestDetail />, role: 1 },
+  { path: "/admincheckrequest", element: <AdminCheckRequest />, role: 2 },
+  {
+    path: "/admindetailrequest/:requestId",
+    element: <AdminDetailRequest />,
+    role: 2,
+  },
   {
     path: "/productDetail/orderInfo",
     element: <OrderInfo />,

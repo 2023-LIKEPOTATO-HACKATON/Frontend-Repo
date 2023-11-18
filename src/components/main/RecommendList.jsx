@@ -28,39 +28,57 @@ const Detail = styled.div`
   color: rgba(21, 21, 21, 0.3);
 `;
 
+const MarketTitle = styled.p`
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #667080;
+`;
+
 const Title = styled.p`
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 22px;
   color: #151515;
 `;
 
 const Price = styled.p`
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 1000;
   line-height: 22px;
   color: #151515;
   margin: 20px 0 0 0;
 `;
 
-const RecommendList = ({ src, name, category, price, discount }) => {
-  const categoryName = useMemo(() => {
-    const result = categorys.find((item) => item.id === category);
+const DiscountRate = styled.p`
+  font-size: 14px;
+  font-weight: 800;
+  color: #d94a56;
+  margin-top: -15px;
+  margin-left: 200px;
+`;
 
-    if (result) {
-      return result.title;
-    } else {
-      return null;
+const RecommendList = ({ src, name, market, price, discount }) => {
+  const discountRate = useMemo(() => {
+    if (discount && price > 0 && discount < price) {
+      return Math.round(((price - discount) / price) * 100);
     }
-  }, [category]);
+    return 0;
+  }, [price, discount]);
 
   return (
     <Page>
       <Image src={src} alt="상품이미지" />
       <Detail>
+        <MarketTitle> {market} </MarketTitle>
         <Title> {name} </Title>
-        <ProductType type={categoryName} style={{ marginLeft: 0, bottom: 0 }} />
-        <Price> {(discount || price).toLocaleString()}원 </Price>
+        <Price>
+          {" "}
+          {discount
+            ? `${discount.toLocaleString()}원`
+            : `${price.toLocaleString()}원`}{" "}
+        </Price>
+        {discount ? <DiscountRate>-{discountRate}%</DiscountRate> : null}
       </Detail>
     </Page>
   );

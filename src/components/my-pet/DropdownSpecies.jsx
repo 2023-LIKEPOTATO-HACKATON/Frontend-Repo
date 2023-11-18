@@ -16,7 +16,7 @@ const DropdownList = styled.li`
   padding: 6px 16px;
   cursor: pointer;
   width: 100%;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
@@ -32,13 +32,13 @@ const SpeciesOptions = [
   { id: 6, SpeciesName: "고슴도치" },
 ];
 
-const DropdownSpecies = ({ onSelect }) => { 
+const DropdownSpecies = ({ onSelect }) => {
   return (
     <DropdownContainer>
       {SpeciesOptions.map((option) => (
         <DropdownList
           key={option.id}
-          onClick={() => onSelect(option.SpeciesName)} 
+          onClick={() => onSelect(option.SpeciesName)}
         >
           {option.SpeciesName}
         </DropdownList>
@@ -48,8 +48,7 @@ const DropdownSpecies = ({ onSelect }) => {
 };
 
 DropdownSpecies.propTypes = {
-  onSelect: PropTypes.func.isRequired, 
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default DropdownSpecies;
-

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const PasswordLabel = styled.label`
   font-family: "Nanum Gothic";
@@ -30,27 +30,21 @@ const PasswordInput = styled.input`
   }
 `;
 
-
-const PasswordInputForm = ({
-  password,
-  handlePasswordChange,
-}) => (
+const PasswordInputForm = ({ password, handlePasswordChange }) => (
   <>
-  <PasswordLabel>비밀번호</PasswordLabel>
-      <PasswordInput
-        label="비밀번호"
-        placeholder="비밀번호를 입력하세요."
-        type="password"
-        onChange={handlePasswordChange}
-        value={password}
-      />
-
+    <PasswordLabel>비밀번호</PasswordLabel>
+    <PasswordInput
+      label="비밀번호"
+      placeholder="비밀번호를 입력하세요."
+      type="password"
+      onChange={handlePasswordChange}
+      value={password}
+    />
   </>
 );
 PasswordInputForm.propTypes = {
   password: PropTypes.string.isRequired,
-  handlePasswordChange: PropTypes.func.isRequired
+  handlePasswordChange: PropTypes.func.isRequired,
 };
 
 export default PasswordInputForm;
-

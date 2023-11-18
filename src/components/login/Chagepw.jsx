@@ -87,8 +87,8 @@ const Chagepw = ({
       label="비밀번호"
       placeholder="비밀번호를 입력하세요."
       type="password"
-      onChange={handleCurrentPasswordChange} 
-      value={currentPassword} 
+      onChange={handleCurrentPasswordChange}
+      value={currentPassword}
     />
     <PasswordLabel>변경할 비밀번호</PasswordLabel>
     <PasswordInput
@@ -137,6 +137,5 @@ Chagepw.propTypes = {
   numberRequirement: PropTypes.bool.isRequired,
   isPasswordMatch: PropTypes.bool,
 };
-
 
 export default Chagepw;

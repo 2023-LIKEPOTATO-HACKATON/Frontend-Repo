@@ -1,10 +1,8 @@
 import styled from "styled-components";
-
 import { useParams, useNavigate } from "react-router-dom";
-import { getOrderList } from "../../librarys/order-api";
 import { useState } from "react";
 
-import HeaderTitle from "../../components/HeaderTitle.jsx";
+import HeaderTitle from "../components/HeaderTitle.jsx";
 import SimpleBar from "simplebar-react";
 
 const Container = styled(SimpleBar)`
@@ -52,14 +50,6 @@ const RequestDate = styled(RequestInfo)`
   font-weight: bold;
 `;
 
-const RequestCredit = styled(RequestInfo)`
-  color: black;
-`;
-
-const RequestRejectionReason = styled(RequestInfo)`
-  color: #ff0000;
-`;
-
 const Spacer = styled.div`
   flex-grow: 1;
 `;
@@ -84,25 +74,42 @@ const BottomBox = styled.button`
 const dummyRequests = [
   {
     date: "2023-01-23 14:00",
-    approved: true,
-    credit: 500,
-    rejectionReason: null,
+    status: "지급 완료",
   },
   {
     date: "2023-01-24 15:30",
-    approved: false,
-    credit: 0,
-    rejectionReason: "잘못된 분리배출",
+    status: "검토 필요",
+  },
+  {
+    date: "2023-01-25 16:45",
+    status: "잘못된 분리배출",
   },
 ];
 
-function ChangeDelivery() {
+const RequestStatus = styled(RequestInfo)`
+  color: ${({ statusColor }) => statusColor};
+`;
+
+const getStatusColor = (status) => {
+  switch (status) {
+    case "지급 완료":
+      return "green";
+    case "검토 필요":
+      return "orange";
+    case "잘못된 분리배출":
+      return "red";
+    default:
+      return "black";
+  }
+};
+
+function AdminCheckRequest() {
   const { requestId } = useParams();
   const [requests, setRequests] = useState(dummyRequests);
   const navigate = useNavigate();
 
   const handleRequestClick = (request) => {
-    navigate(`/requestDetail/${request.date}`, {
+    navigate(`/admindetailrequest/${request.date}`, {
       state: { requestData: request },
     });
   };
@@ -116,13 +123,9 @@ function ChangeDelivery() {
           onClick={() => handleRequestClick(request)}
         >
           <RequestDate>{request.date}</RequestDate>
-          {request.approved ? (
-            <RequestCredit>{request.credit}원</RequestCredit>
-          ) : (
-            <RequestRejectionReason>
-              {request.rejectionReason}
-            </RequestRejectionReason>
-          )}
+          <RequestStatus statusColor={getStatusColor(request.status)}>
+            {request.status}
+          </RequestStatus>
         </RequestItemContainer>
       ))}
       <Spacer />
@@ -131,4 +134,4 @@ function ChangeDelivery() {
   );
 }
 
-export default ChangeDelivery;
+export default AdminCheckRequest;

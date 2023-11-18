@@ -61,7 +61,7 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #d94a56;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
