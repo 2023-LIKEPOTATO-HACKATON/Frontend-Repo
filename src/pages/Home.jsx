@@ -22,7 +22,7 @@ const Background = styled.img`
   max-width: 530px;
   max-height: 1024px;
   margin-bottom: -60px;
-  width: 100%;
+  width: 130%;
   color: #589E5B;
   bottom: 64px;
   padding: 0 min(10%, 50px);
