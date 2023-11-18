@@ -21,17 +21,6 @@ const Container = styled.div`
   }
 `;
 
-const Background = styled.img`
-  max-width: 500px;
-  width: 100%;
-  color: #589E5B;
-  bottom: 64px;
-  padding: 0 min(10%, 50px);
-  position: absolute;
-  object-fit: contain;
-
-  z-index: 0;
-`;
 
 const StyledButton = styled.button`
   margin: 4px auto;

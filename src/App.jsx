@@ -26,6 +26,7 @@ import DetailPage from "./pages/store/DetailPage.jsx";
 import HeaderPage from "./pages/HeaderPage.jsx";
 import Main from "./pages/Main.jsx";
 import "./App.scss";
+import MyCreditPage from "./pages/MyCreditPage.jsx";
 
 const Container = styled.div`
   background-color: transparent;
@@ -43,6 +44,7 @@ const routerList = [
   { path: "/login", element: <LoginPage /> },
   { path: "/signup", element: <SignupPage /> },
   { path: "/compelete", element: <SignCompelete /> },
+  { path: "/mycredit", element: <MyCreditPage/> },
   { path: "/profile", element: <UserProfile />, role: 1 },
   {
     path: "/admin/store",
