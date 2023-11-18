@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { userLogin } from "../../librarys/login-api";
 import { useSelector } from "react-redux";
 import { selectEmail, selectIsAdmin, selectName } from "../../redux/userSlice";
 
@@ -43,10 +42,12 @@ function UserProfile() {
       </Title>
       <Text>{email}</Text>
       <MenuItem title="나의 크레딧 정보" to="/changename" />
-      <MenuItem title="인증요청 목록 조회" to="/checkdelivery" />
+      {isAdmin ? (
+        <MenuItem title="인증요청 목록 조회" to="/admincheckrequest" />
+      ) : (
+        <MenuItem title="인증요청 목록 조회" to="/checkdelivery" />
+      )}
       <MenuItem title="로그아웃" to="/checkdelivery" />
-
-      {isAdmin ? <MenuItem title="공동구매 관리" to="/admin/store" /> : null}
     </Container>
   );
 }

@@ -32,6 +32,8 @@ import TakePictureCompelete from "./pages/TakePictureCompelete.jsx";
 import DoPurchase from "./pages/DoPurchase.jsx"
 import CompeletePurchase from "./pages/CompeletePurchase.jsx";
 import RequestDetail from "./pages/LoginSignup/RequestDetail.jsx";
+import AdminCheckRequest from "./pages/AdminCheckRequest.jsx";
+import AdminDetailRequest from "./pages/AdminDetailRequest.jsx";
 
 const Container = styled.div`
   background-color: transparent;
@@ -90,6 +92,8 @@ const routerList = [
   { path: "/purchase/:id", element: <DoPurchase />, role: 1 },
   { path: "/compeletepurchase/:id", element: <CompeletePurchase />, role: 1 },
   { path: "/requestdetail/:requestId", element: <RequestDetail />, role: 1 },
+  { path: "/admincheckrequest", element: <AdminCheckRequest />, role: 2 },
+  { path: "/admindetailrequest/:requestId", element: <AdminDetailRequest />, role: 2 },
   {
     path: "/productDetail/orderInfo",
     element: <OrderInfo />,
