@@ -2,7 +2,7 @@ import styled from "styled-components";
 import SimpleBar from "simplebar-react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProduct } from "../librarys/store-api";
+import { purchaseProduct } from "../librarys/gift-api.js";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled(SimpleBar)`
@@ -234,8 +234,12 @@ function DoPurchase() {
     return <div>상품 정보를 불러오는 중...</div>;
   }
 
-  const handlePayment = () => {
-    navigate(`/compeletepurchase/${id}`, { state: { finalPrice: finalPrice } });
+  const handlePayment = async () => {
+    const response = await purchaseProduct(id, mid);
+    if (response === 'success') {
+      navigate(`/compeletepurchase/${id}`, { state: { finalPrice: finalPrice } });
+    } else {
+    }
   };
 
   return (
