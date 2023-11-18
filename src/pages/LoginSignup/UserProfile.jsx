@@ -35,17 +35,16 @@ function UserProfile() {
 
   return (
     <Container>
-      <HeaderTitle url="/main" title="" />
+      <HeaderTitle url="/main" title="회원정보" />
       <Title style={{ marginTop: "32px" }}>안녕하세요</Title>
       <Title>
         {name}
         {isAdmin ? "(관리자)" : null} 님
       </Title>
       <Text>{email}</Text>
-
-      <MenuItem title="사용자 이름 변경" to="/changename" />
-      <MenuItem title="비밀번호 변경" to="/changepw" />
-      <MenuItem title="주문 조회" to="/checkdelivery" />
+      <MenuItem title="나의 크레딧 정보" to="/changename" />
+      <MenuItem title="인증요청 목록 조회" to="/changepw" />
+      <MenuItem title="로그아웃" to="/checkdelivery" />
 
       {isAdmin ? <MenuItem title="공동구매 관리" to="/admin/store" /> : null}
     </Container>

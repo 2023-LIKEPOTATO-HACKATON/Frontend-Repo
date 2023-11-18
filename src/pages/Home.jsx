@@ -19,10 +19,10 @@ const Container = styled.div`
 `;
 
 const Background = styled.img`
-  max-width: 530px;
+  max-width: 560px;
   max-height: 1024px;
   margin-bottom: -60px;
-  width: 120%;
+  width: 100%;
   color: #589E5B;
   bottom: 64px;
   padding: 0 min(10%, 50px);
