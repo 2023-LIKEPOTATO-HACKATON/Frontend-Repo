@@ -6,8 +6,6 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import styled from "styled-components";
-import BackButton from "../../assets/images/getback.png";
-import LoginPassword from "../../components/login/LoginPassword.jsx";
 import HeaderTitle from "../../components/HeaderTitle.jsx";
 
 import { userLogin } from "../../librarys/login-api.js";

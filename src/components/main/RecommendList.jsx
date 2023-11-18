@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import ProductType from "../ProductType";
 import { useMemo } from "react";
-import { categorys } from "../../librarys/data.js";
+import { useState, useEffect } from "react";
+import { getGiftList } from "../librarys/gift-api.js";
 
 const Page = styled.div`
   /* width: 470px; */
@@ -65,6 +65,18 @@ const RecommendList = ({ src, name, market, price, discount }) => {
     }
     return 0;
   }, [price, discount]);
+
+  const [giftList, setGiftList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    (async () => {
+      const giftData = await getGiftList(currentPage);
+      if (giftData) {
+        setGiftList(giftData.dtoList);
+      }
+    })();
+  }, [currentPage]);
 
   return (
     <Page>

@@ -97,7 +97,7 @@ function SignupPage() {
 
   async function onClick() {
     if (isComplete) {
-      const data = await registerUser(email, password, name, phone);
+      const data = await registerUser(email, name, password, phone);
 
       loginDispatch(
         login({
