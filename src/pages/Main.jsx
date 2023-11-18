@@ -8,6 +8,7 @@ import RecommemdProduct from "../components/main/RecommendList";
 import Arrow from "../assets/images/rightArrow.png";
 import { getFeaturedProduct } from "../librarys/store-api";
 import { useEffect } from "react";
+import Poster from "../assets/images/poster.png";
 
 const PageContainer = styled.div`
   display: block;
@@ -104,6 +105,51 @@ const NextBtn = styled.img`
   cursor: pointer;
 `;
 
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+`;
+
+const ModalContainer = styled.div`
+  background-color: white;
+  width: 300px;
+  height: 500px;
+  padding: 30px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const ModalTitle = styled.h2`
+  font-size: 24px;
+  color: #31422E;
+`;
+
+const ModalImage = styled.img`
+  width: 100%;
+  height: auto; 
+`;
+
+const ConfirmButton = styled.button`
+  width: 300px;
+  height: 40px;
+  background-color: #31422E;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: -55px;
+`;
 
 const Main = () => {
   const [productList, setProductList] = useState([]);
@@ -111,11 +157,17 @@ const Main = () => {
   const [recentItems, setRecentItems] = useState([]);
   const [popularItems, setPopularItems] = useState([]);
   const [categoryId, setCategoryId] = useState();
+  const [showModal, setShowModal] = useState(true);
 
   const recentFilteredProducts =
     categoryId !== undefined
       ? recentItems.filter((product) => product.category === categoryId)
       : recentItems;
+
+      
+      const handleCloseModal = () => {
+        setShowModal(false);
+      };
 
   useEffect(() => {
     (async () => {
@@ -142,6 +194,15 @@ const Main = () => {
 
   return (
     <PageContainer>
+      {showModal && (
+      <ModalOverlay>
+        <ModalContainer>
+          <ModalTitle>공지사항</ModalTitle>
+          <ModalImage src={Poster} alt="공지사항 이미지" />
+          <ConfirmButton onClick={handleCloseModal}>확인</ConfirmButton>
+        </ModalContainer>
+      </ModalOverlay>
+    )}
       <CreditContainer>
         <Heading>
           <TextContainer>
