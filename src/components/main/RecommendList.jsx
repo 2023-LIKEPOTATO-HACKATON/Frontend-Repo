@@ -54,7 +54,7 @@ const DiscountRate = styled.p`
   font-size: 14px;
   font-weight: 800;
   color: #D94A56;
-  margin-top:-15px;
+  margin-top: -15px;
   margin-left: 200px;
 `;
 

@@ -154,9 +154,17 @@ const FinalPrice = styled(Price)`
 `;
 
 const DiscountRate = styled(Percent)`
-  margin-left: 350px;
-  font-size: 16px;
-  color: #d94a56;
+  font-size: 14px;
+  color: #D94A56;
+  margin-top: -5px;
+  margin-left: 270px;
+`;
+
+const MarketTitle = styled.p`
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #667080;
 `;
 
 const ProductDetail = () => {
@@ -168,8 +176,6 @@ const ProductDetail = () => {
   const [period, setPeriod] = useState("");
   const [openOrder, setOpenOrder] = useState(false);
   const { id } = useParams();
-
-  
 
   useEffect(() => {
     (async () => {
@@ -229,6 +235,7 @@ const onClickOrder = () => {
       )}
       <Image onClick={onImageClick} src={data.coverImage} alt="상품 이미지" />
       <ProductInfoContainer>
+        <MarketTitle> {data.market} </MarketTitle>
         <SellerName>{data.seller}</SellerName>
         <ModifiedProductName>{data.name}</ModifiedProductName>
         <OriginalPrice>
@@ -238,9 +245,11 @@ const onClickOrder = () => {
           <FinalPrice>
             {(data.discount || data.price || 0).toLocaleString()}원
           </FinalPrice>
-          <DiscountRate style={{ display: percent > 0 ? null : "none" }}>
-            {percent}%
-          </DiscountRate>
+          {percent > 0 && (
+            <DiscountRate>
+              -{percent}%
+            </DiscountRate>
+          )}
         </SubProductInfo>
         <OrderBtn onClick={onClickOrder}> 구매하기 </OrderBtn>
         {openOrder && <ProductOrder show={openOrder} />}
