@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
-import LogoImage from "../assets/images/mainLogo.svg";
+import Image from "../assets/images/BB.png";
 
 const Container = styled.div`
   padding: 64px 24px;
   min-height: calc(var(--vh) * 100);
 
-  background: linear-gradient(182deg, #31422E 0%, #589E5B 37.5%), #fff;
+  background: linear-gradient(182deg, #f2b366 0%, #589E5B 37.5%), #fff;
 
   display: flex;
   flex-direction: column;
@@ -21,6 +20,19 @@ const Container = styled.div`
   }
 `;
 
+const Background = styled.img`
+  max-width: 530px;
+  max-height: 1024px;
+  margin-bottom: -60px;
+  width: 100%;
+  color: #589E5B;
+  bottom: 64px;
+  padding: 0 min(10%, 50px);
+  position: absolute;
+  object-fit: contain;
+
+  z-index: 0;
+`;
 
 const StyledButton = styled.button`
   margin: 4px auto;
@@ -37,10 +49,6 @@ const StyledButton = styled.button`
 const LoginButton = styled(StyledButton)`
   background-color: #FFD02C;
   color: white;
-
-  &:hover {
-    background-color: #FFD02C;
-  }
 `;
 
 const SignupButton = styled(StyledButton)`
@@ -48,21 +56,6 @@ const SignupButton = styled(StyledButton)`
   color: #FFD02C;
   background-color: #ffffff;
 
-  &:hover {
-    background-color: rgba(248, 248, 248, 1);
-  }
-`;
-
-const Title = styled.img`
-  margin-top: 64px;
-  max-width: 360px;
-  width: 100%;
-`;
-
-const Subtitle = styled.p`
-  font-size: 16px;
-  font-weight: 400;
-  color: white;
 `;
 
 const Spacer = styled.div`
@@ -73,8 +66,7 @@ function Home() {
   const navigate = useNavigate();
   return (
     <Container>
-      <Title src={LogoImage} />
-      <Subtitle>내 친구를 위한 현명한 소비</Subtitle>
+      <Background src={Image} />
       <Spacer />
       <LoginButton onClick={() => navigate("/login")}>로그인</LoginButton>
       <SignupButton onClick={() => navigate("/signup")}>회원가입</SignupButton>

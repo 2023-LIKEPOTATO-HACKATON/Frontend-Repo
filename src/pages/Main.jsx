@@ -47,17 +47,23 @@ const ProductSelect = styled(Link)`
   text-decoration: none;
 `;
 
-const Heading = styled.p`
+const Heading = styled.div`
+  color: #294d23;
+  margin-top: -5px;
+`;
+const HeadText= styled.p`
   font-size: 16px;
   color: #294d23;
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-left: 10px;
 `;
 
 const TextContainer = styled.div`
-  margin-top: 4px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column; 
+  align-items: flex-start; 
+  justify-content: center;
+  margin-left: 20px;
 `;
 
 const Text = styled.p`
@@ -71,6 +77,23 @@ const CreditContainer = styled.div`
   background-color: #F6F4F2;
   width: 100%;
   height: 125px;
+`;
+const CreditAmountContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const CreditAmount = styled(Text)`
+  margin-right: auto;
+  margin-top: 10px;
+  margin-left: 30px;
+`;
+
+const CreditCurrency = styled(Text)`
+  margin-left: auto; 
+  margin-right: 60px;
 `;
 
 const NextBtn = styled.img`
@@ -120,11 +143,15 @@ const Main = () => {
   return (
     <PageContainer>
       <CreditContainer>
-        <Heading>지금 있는 크레딧</Heading>
-        <TextContainer>
-        <Text>10000</Text>
-        <Text>원</Text>
-      </TextContainer>
+        <Heading>
+          <TextContainer>
+            <HeadText>지금 있는 크레딧</HeadText>
+            <CreditAmountContainer>
+              <CreditAmount>10000</CreditAmount>
+              <CreditCurrency>원</CreditCurrency>
+            </CreditAmountContainer>
+          </TextContainer>
+        </Heading>
       </CreditContainer>
       <DetailMenu>
         <DetailMenuTitle>
