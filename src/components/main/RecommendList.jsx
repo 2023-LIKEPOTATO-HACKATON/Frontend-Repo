@@ -50,7 +50,21 @@ const Price = styled.p`
   margin: 20px 0 0 0;
 `;
 
+const DiscountRate = styled.p`
+  font-size: 14px;
+  font-weight: 800;
+  color: #D94A56;
+  margin-top:-15px;
+  margin-left: 200px;
+`;
+
 const RecommendList = ({ src, name, market, price, discount }) => {
+  const discountRate = useMemo(() => {
+    if (discount && price > 0 && discount < price) {
+      return Math.round(((price - discount) / price) * 100);
+    }
+    return 0;
+  }, [price, discount]);
 
   return (
     <Page>
@@ -58,7 +72,8 @@ const RecommendList = ({ src, name, market, price, discount }) => {
       <Detail>
         <MarketTitle> {market} </MarketTitle>
         <Title> {name} </Title>
-        <Price> {(discount || price).toLocaleString()}원 </Price>
+        <Price> {discount ? `${discount.toLocaleString()}원` : `${price.toLocaleString()}원`} </Price>
+        {discount ? <DiscountRate>-{discountRate}%</DiscountRate> : null}
       </Detail>
     </Page>
   );

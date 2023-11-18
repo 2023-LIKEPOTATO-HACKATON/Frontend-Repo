@@ -53,7 +53,7 @@ const Heading = styled.div`
   margin-top: -5px;
 `;
 
-const HeadText= styled.p`
+const HeadText = styled.p`
   font-size: 16px;
   color: #294d23;
   margin-top: 30px;
@@ -62,8 +62,8 @@ const HeadText= styled.p`
 
 const TextContainer = styled.div`
   display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
   margin-left: 20px;
 `;
@@ -72,11 +72,11 @@ const Text = styled.p`
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -1px;
-  color: #31422E;
+  color: #31422e;
 `;
 
 const CreditContainer = styled.div`
-  background-color: #F6F4F2;
+  background-color: #f6f4f2;
   width: 100%;
   height: 125px;
 `;
@@ -94,7 +94,7 @@ const CreditAmount = styled(Text)`
 `;
 
 const CreditCurrency = styled(Text)`
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: 60px;
 `;
 
@@ -132,19 +132,19 @@ const ModalContainer = styled.div`
 
 const ModalTitle = styled.h2`
   font-size: 16px;
-  color: #31422E;
+  color: #31422e;
   font-weight: 800;
 `;
 
 const ModalImage = styled.img`
   width: 100%;
-  height: auto; 
+  height: auto;
 `;
 
 const ConfirmButton = styled.button`
   width: 300px;
   height: 60px;
-  background-color: #31422E;
+  background-color: #31422e;
   color: white;
   border: none;
   cursor: pointer;
@@ -166,10 +166,9 @@ const Main = () => {
       ? recentItems.filter((product) => product.category === categoryId)
       : recentItems;
 
-      
-      const handleCloseModal = () => {
-        setShowModal(false);
-      };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     (async () => {
@@ -197,14 +196,14 @@ const Main = () => {
   return (
     <PageContainer>
       {showModal && (
-      <ModalOverlay>
-        <ModalContainer>
-          <ModalTitle>공지사항</ModalTitle>
-          <ModalImage src={Poster} alt="공지사항 이미지" />
-          <ConfirmButton onClick={handleCloseModal}>확인</ConfirmButton>
-        </ModalContainer>
-      </ModalOverlay>
-    )}
+        <ModalOverlay>
+          <ModalContainer>
+            <ModalTitle>공지사항</ModalTitle>
+            <ModalImage src={Poster} alt="공지사항 이미지" />
+            <ConfirmButton onClick={handleCloseModal}>확인</ConfirmButton>
+          </ModalContainer>
+        </ModalOverlay>
+      )}
       <CreditContainer>
         <Heading>
           <TextContainer>
@@ -218,8 +217,8 @@ const Main = () => {
       </CreditContainer>
       <DetailMenu>
         <DetailMenuTitle>
-            <Title> 최근 등록된 상품 </Title>
-            <NextBtn src={Arrow} alt="자세히보기" />
+          <Title> 최근 등록된 상품 </Title>
+          <NextBtn src={Arrow} alt="자세히보기" />
         </DetailMenuTitle>
         <RecommendList>
           {recentFilteredProducts.map((item) => (
@@ -227,7 +226,6 @@ const Main = () => {
               <RecommemdProduct
                 name={item.name}
                 market={item.market}
-                category={item.category}
                 price={item.price}
                 discount={item.discount}
                 src={item.thumbnailImage}
