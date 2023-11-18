@@ -41,7 +41,7 @@ function UserProfile() {
         {isAdmin ? "(관리자)" : null} 님
       </Title>
       <Text>{email}</Text>
-      <MenuItem title="나의 크레딧 정보" to="/changename" />
+      <MenuItem title="나의 크레딧 정보" to="/mycredit" />
       {isAdmin ? (
         <MenuItem title="인증요청 목록 조회" to="/admincheckrequest" />
       ) : (

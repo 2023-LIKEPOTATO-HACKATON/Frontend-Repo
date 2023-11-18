@@ -98,6 +98,7 @@ const ApproveButton = styled(ActionButton)`
 
 const RejectButton = styled(ActionButton)`
   background-color: #ffffff;
+  border: 1px solid #31422E;
   color: #31422E;
 `;
 
