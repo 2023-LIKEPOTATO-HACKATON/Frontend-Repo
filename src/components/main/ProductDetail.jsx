@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../Button";
 import ProductOrder from "../product-detail/ProductOrder";
@@ -91,29 +92,6 @@ const Price = styled.p`
   line-height: 34.57px;
 `;
 
-const GroupPurchaseContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 10px 0 20px 0;
-`;
-
-const GPSubContainer = styled.div`
-  width: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: -13px;
-`;
-
-const GPTitle = styled.p`
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 35px;
-  letter-spacing: -0.02em;
-  color: #151515;
-`;
-
 const OrderBtn = styled(Button)`
   width: 100%;
   color: #ffffff;
@@ -191,6 +169,8 @@ const ProductDetail = () => {
   const [openOrder, setOpenOrder] = useState(false);
   const { id } = useParams();
 
+  
+
   useEffect(() => {
     (async () => {
       const data = await getProduct(id);
@@ -222,7 +202,11 @@ const ProductDetail = () => {
     })();
   }, [id]);
 
-  const onClickOrder = () => setOpenOrder((prev) => !prev);
+  const navigate = useNavigate();
+
+const onClickOrder = () => {
+  navigate(`/purchase/${id}`);
+};
 
   function onImageClick() {
     if (isAdmin) {
