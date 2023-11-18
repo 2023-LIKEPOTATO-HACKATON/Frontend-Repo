@@ -3,9 +3,8 @@ import styled from "styled-components";
 import HeaderTitle from "../components/HeaderTitle.jsx";
 
 import SimpleBar from "simplebar-react";
-import { useNavigate } from "react-router-dom";
-import { getSpringAxios } from "../librarys/axios.js";
-import { Token } from  "../librarys/login-api.js"
+import { useNavigate,useEffect, useState } from "react-router-dom";
+import { getCreditList, getMyCreditTotal } from "../librarys/credit-api.js";
 
 const Container = styled(SimpleBar)`
   display: flex;
@@ -170,6 +169,25 @@ function MyCreditPage() {
     navigate("/takephoto");
   };
 
+  const [creditList, setCreditList] = useState([]);
+  const [creditTotal, setCreditTotal] = useState(0); 
+
+  useEffect(() => {
+    (async () => {
+      const credits = await getCreditList();
+      setCreditList(credits);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const creditAmount = await getMyCreditTotal();
+      if (creditAmount !== null) {
+        setCreditTotal(creditAmount);
+      }
+    })();
+  }, []); 
+
   return (
     <Container>
       <HeaderTitle to="/userProfile" title="나의 크레딧" />
@@ -178,7 +196,7 @@ function MyCreditPage() {
           <TextContainer>
             <HeadText>지금 있는 크레딧</HeadText>
             <CreditAmountContainer>
-              <CreditAmount>{create_value}</CreditAmount>
+            <CreditAmount>{creditTotal.toLocaleString()}</CreditAmount> 
               <CreditCurrency>원</CreditCurrency>
             </CreditAmountContainer>
           </TextContainer>
