@@ -4,6 +4,8 @@ import HeaderTitle from "../components/HeaderTitle.jsx";
 
 import SimpleBar from "simplebar-react";
 import { useNavigate } from "react-router-dom";
+import { getSpringAxios } from "../librarys/axios.js";
+import { Token } from  "../librarys/login-api.js"
 
 const Container = styled(SimpleBar)`
   display: flex;
@@ -92,7 +94,6 @@ const AdvantageBeforeMoney = styled.div`
   margin-right: 10px;
   margin-top: 10px;
 `;
-const CreditList = styled.div``;
 
 const Divider = styled.div`
   width: calc(100% + 48px);
@@ -162,57 +163,6 @@ const BottomRow = styled(TopRow)`
   font-size: 10px;
 `;
 
-const creditData = [
-  {
-    title: "무료 음료 쿠폰 (벤티 사이즈)",
-    amount: "-5,300원",
-    date: "2023/11/18",
-    beforeAmount: "13,040원",
-  },
-  {
-    title: "분리배출 인증",
-    amount: "+500원",
-    date: "2023/11/17",
-    beforeAmount: "18,840원",
-  },
-  {
-    title: "분리배출 인증",
-    amount: "+500원",
-    date: "2023/11/16",
-    beforeAmount: "18,340원",
-  },
-  {
-    title: "분리배출 인증",
-    amount: "+500원",
-    date: "2023/11/15",
-    beforeAmount: "17,750원",
-  },
-  {
-    title: "분리배출 인증",
-    amount: "+500원",
-    date: "2023/11/12",
-    beforeAmount: "17,040원",
-  },
-  {
-    title: "분리배출 인증",
-    amount: "+500원",
-    date: "2023/11/10",
-    beforeAmount: "16,540원",
-  },
-  {
-    title: "분리배출 인증",
-    amount: "+500원",
-    date: "2023/11/09",
-    beforeAmount: "16,050원",
-  },
-  {
-    title: "분리배출 인증",
-    amount: "+500원",
-    date: "2023/11/02",
-    beforeAmount: "15,040원",
-  },
-];
-
 function MyCreditPage() {
   const navigate = useNavigate();
 
@@ -228,13 +178,13 @@ function MyCreditPage() {
           <TextContainer>
             <HeadText>지금 있는 크레딧</HeadText>
             <CreditAmountContainer>
-              <CreditAmount>13,040</CreditAmount>
+              <CreditAmount>{create_value}</CreditAmount>
               <CreditCurrency>원</CreditCurrency>
             </CreditAmountContainer>
           </TextContainer>
         </Heading>
       </CreditContainer>
-      {creditData.map((item, index) => (
+      {creditList.map((item, index) => (
         <CreditListItem key={index}>
           <TopRow>
             <AdvantageTitle>{item.title}</AdvantageTitle>
@@ -244,7 +194,7 @@ function MyCreditPage() {
             <AdvantageDate>{item.date}</AdvantageDate>
             <AdvantageBeforeMoney>{item.beforeAmount}</AdvantageBeforeMoney>
           </BottomRow>
-          {index < creditData.length - 1 && <Divider />}
+          {index < creditList.length - 1 && <Divider />}
         </CreditListItem>
       ))}
       <Spacer />
