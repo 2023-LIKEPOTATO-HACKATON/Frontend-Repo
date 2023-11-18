@@ -1,15 +1,10 @@
 import styled from "styled-components";
-import BackButton from "../../assets/images/getback.png";
-import { Link, useNavigate } from "react-router-dom";
 
-import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { getOrderList } from "../../librarys/order-api";
 import { useState } from "react";
 
 import HeaderTitle from "../../components/HeaderTitle.jsx";
-import ProductListItem from "../../components/ProductListItem.jsx";
-import dayjs from "dayjs";
-
 import SimpleBar from "simplebar-react";
 
 const Container = styled(SimpleBar)`
@@ -42,69 +37,92 @@ const Container = styled(SimpleBar)`
   }
 `;
 
-const DateTitle = styled.div`
-  margin: 12px 24px;
-  margin-top: 36px;
-  font-size: 16px;
-  font-weight: 700;
+const RequestItemContainer = styled.div`
+  padding: 16px;
+  border-bottom: 1px solid #9B9B9B;
 `;
 
-const Item = styled(ProductListItem)`
-  padding: 12px 24px;
+const RequestInfo = styled.div`
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 8px;
 `;
+
+const RequestDate = styled(RequestInfo)`
+  font-weight: bold;
+`;
+
+const RequestCredit = styled(RequestInfo)`
+  color: black;
+`;
+
+const RequestRejectionReason = styled(RequestInfo)`
+  color: #FF0000; 
+`;
+
+
+const Spacer = styled.div`
+  flex-grow: 1;
+`;
+
+const BottomBox = styled.button`
+  padding: 24px;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #589E5B;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  font-weight:800;
+
+  transition: opacity 0.2s;
+`;
+
+
+const dummyRequests = [
+  {
+    date: "2023-01-23 14:00",
+    approved: true,
+    credit: 500,
+    rejectionReason: null
+  },
+  {
+    date: "2023-01-24 15:30",
+    approved: false,
+    credit: 0,
+    rejectionReason: "잘못된 분리배출"
+  }
+];
 
 function ChangeDelivery() {
+  const { requestId } = useParams();
+  const [requests, setRequests] = useState(dummyRequests);
   const navigate = useNavigate();
-  const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      const data = await getOrderList();
+  const handleRequestClick = (request) => {
+    navigate(`/requestDetail/${request.date}`, { state: { requestData: request } });
+  };
 
-      if (data) {
-        setOrders(
-          data.reduce((result, item) => {
-            const date = dayjs(item.payment.purchased_at).format("YYYY-MM-DD");
-            const find = result.find((element) => element.date === date);
-
-            if (find) {
-              find.list.push(item);
-            } else {
-              result.push({
-                date,
-                list: [item],
-              });
-            }
-
-            return result;
-          }, []),
-        );
-      }
-    })();
-  }, []);
-
-  console.log(orders);
 
   return (
     <Container>
-      <HeaderTitle to="/userProfile" title="주문 조회" />
-      {orders.map((element) => (
-        <>
-          <DateTitle>
-            {dayjs(element.date).format("YYYY년 MM월 DD일")} 구매
-          </DateTitle>
-          {element.list.map((item) => (
-            <Item
-              key={item.id}
-              src={item.product.thumbnailImage}
-              name={item.product.name}
-              category={item.product.category}
-              price={item.price}
-              onClick={() => navigate(`/productDetail/${item.product.id}`)}
-            />
-          ))}
-        </>
+      <HeaderTitle to="/userProfile" title="인증 요청 목록 조회" />
+      {requests.map((request, index) => (
+        <RequestItemContainer key={index} onClick={() => handleRequestClick(request)}>
+          <RequestDate>{request.date}</RequestDate>
+          {request.approved ? (
+            <RequestCredit>{request.credit}원</RequestCredit>
+          ) : (
+            <RequestRejectionReason>{request.rejectionReason}</RequestRejectionReason>
+          )}
+        </RequestItemContainer>
       ))}
+      <Spacer />
+      <BottomBox >분리배출 인증하기</BottomBox>
     </Container>
   );
 }

@@ -36,7 +36,7 @@ const Content = styled(SimpleBar)`
 
 const Header = styled.div`
   position: fixed;
-  max-width: 500px;
+  max-width: 430px;
   width: 100%;
   background-color: #ffffff;
   color: #151515;
@@ -87,38 +87,6 @@ const Image = styled.img`
   }
 `;
 
-const MenuContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-`;
-
-const MenuButton = styled(Link)`
-  width: 100%;
-  height: 48px;
-  border: none;
-  border-bottom: 1px solid rgba(102, 112, 128, 0.3);
-  background-color: transparent;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.25s;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background-color: #efefef;
-  }
-
-  &.selected {
-    color: rgba(217, 74, 86, 1);
-    border-bottom: 2px solid rgba(217, 74, 86, 1);
-    font-weight: 600;
-  }
-`;
 
 const Container = styled.div`
   max-width: 500px;
@@ -165,14 +133,6 @@ function HeaderPage() {
             />
           </ImageContainer>
         </TitleWrapper>
-        <MenuContainer>
-          <MenuButton
-            to="/account-book"
-            className={getSelected("/account-book")}
-          >
-            가계부
-          </MenuButton>
-        </MenuContainer>
       </Header>
       <Content
         className={modalStatus ? "freeze" : null}

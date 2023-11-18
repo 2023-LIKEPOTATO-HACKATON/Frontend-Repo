@@ -31,6 +31,7 @@ import TakePicturePage from "./pages/TakePicturePage.jsx";
 import TakePictureCompelete from "./pages/TakePictureCompelete.jsx";
 import DoPurchase from "./pages/DoPurchase.jsx"
 import CompeletePurchase from "./pages/CompeletePurchase.jsx";
+import RequestDetail from "./pages/LoginSignup/RequestDetail.jsx";
 
 const Container = styled.div`
   background-color: transparent;
@@ -88,6 +89,7 @@ const routerList = [
   { path: "/productDetail/:id", element: <ProductDetail />, role: 1 },
   { path: "/purchase/:id", element: <DoPurchase />, role: 1 },
   { path: "/compeletepurchase/:id", element: <CompeletePurchase />, role: 1 },
+  { path: "/requestdetail/:requestId", element: <RequestDetail />, role: 1 },
   {
     path: "/productDetail/orderInfo",
     element: <OrderInfo />,

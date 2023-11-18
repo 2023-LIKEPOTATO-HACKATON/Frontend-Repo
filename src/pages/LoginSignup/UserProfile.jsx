@@ -43,7 +43,7 @@ function UserProfile() {
       </Title>
       <Text>{email}</Text>
       <MenuItem title="나의 크레딧 정보" to="/changename" />
-      <MenuItem title="인증요청 목록 조회" to="/changepw" />
+      <MenuItem title="인증요청 목록 조회" to="/checkdelivery" />
       <MenuItem title="로그아웃" to="/checkdelivery" />
 
       {isAdmin ? <MenuItem title="공동구매 관리" to="/admin/store" /> : null}
