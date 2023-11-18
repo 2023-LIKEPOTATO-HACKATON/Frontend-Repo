@@ -52,6 +52,7 @@ const Heading = styled.div`
   color: #294d23;
   margin-top: -5px;
 `;
+
 const HeadText= styled.p`
   font-size: 16px;
   color: #294d23;
@@ -130,8 +131,9 @@ const ModalContainer = styled.div`
 `;
 
 const ModalTitle = styled.h2`
-  font-size: 24px;
+  font-size: 16px;
   color: #31422E;
+  font-weight: 800;
 `;
 
 const ModalImage = styled.img`
@@ -141,7 +143,7 @@ const ModalImage = styled.img`
 
 const ConfirmButton = styled.button`
   width: 300px;
-  height: 40px;
+  height: 60px;
   background-color: #31422E;
   color: white;
   border: none;

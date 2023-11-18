@@ -2,7 +2,7 @@ import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ProfileImage from "../assets/images/profile.png";
 import SimpleBar from "simplebar-react";
-import LogoImage from "../assets/images/logo.svg";
+import LogoImage from "../assets/images/logo.png";
 
 import { show } from "../redux/menuSlice.js";
 

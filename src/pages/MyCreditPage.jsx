@@ -41,10 +41,11 @@ const Heading = styled.p`
 `;
 
 const TextContainer = styled.div`
-  margin-top: 4px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 20px;
 `;
 
 const Text = styled.p`
@@ -59,12 +60,12 @@ const CreditContainer = styled.div`
   width: 100%;
   height: 125px;
 `;
-const AdvantageTitle= styled.div`
+const AdvantageTitle = styled.div`
   color: #151515;
   font-size: 16px;
   font-weight: 800;
-`
-const AdvantageMoney= styled.div`
+`;
+const AdvantageMoney = styled.div`
   color: #151515;
   font-size: 16px;
   font-weight: 800;
@@ -81,9 +82,7 @@ const AdvantageBeforeMoney = styled.div`
   font-size: 10px;
   font-weight: 500;
 `;
-const CreditList= styled.div`
-
-`;
+const CreditList = styled.div``;
 
 const Divider = styled.div`
   width: calc(100% + 48px);
@@ -102,13 +101,37 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #589E5B;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
-  font-weight:800;
+  font-weight: 800;
 
   transition: opacity 0.2s;
+`;
+const HeadText = styled.p`
+  font-size: 16px;
+  color: #294d23;
+  margin-top: 30px;
+  margin-left: 10px;
+`;
+
+const CreditAmountContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const CreditAmount = styled(Text)`
+  margin-right: auto;
+  margin-top: 10px;
+  margin-left: 30px;
+`;
+
+const CreditCurrency = styled(Text)`
+  margin-left: auto;
+  margin-right: 60px;
 `;
 
 function MyCreditPage() {
@@ -116,11 +139,15 @@ function MyCreditPage() {
     <Container>
       <HeaderTitle to="/userProfile" title="나의 크레딧" />
       <CreditContainer>
-        <Heading>지금 있는 크레딧</Heading>
-        <TextContainer>
-          <Text>10000</Text>
-          <Text>원</Text>
-        </TextContainer>
+        <Heading>
+          <TextContainer>
+            <HeadText>지금 있는 크레딧</HeadText>
+            <CreditAmountContainer>
+              <CreditAmount>10000</CreditAmount>
+              <CreditCurrency>원</CreditCurrency>
+            </CreditAmountContainer>
+          </TextContainer>
+        </Heading>
       </CreditContainer>
       <CreditList>
         <AdvantageTitle>무료 음료 쿠폰 (벤티 사이즈)</AdvantageTitle>
