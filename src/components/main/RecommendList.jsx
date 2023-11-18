@@ -43,23 +43,14 @@ const Price = styled.p`
   margin: 20px 0 0 0;
 `;
 
-const RecommendList = ({ src, name, category, price, discount }) => {
-  const categoryName = useMemo(() => {
-    const result = categorys.find((item) => item.id === category);
+const RecommendList = ({ src, name,  price, discount }) => {
 
-    if (result) {
-      return result.title;
-    } else {
-      return null;
-    }
-  }, [category]);
 
   return (
     <Page>
       <Image src={src} alt="상품이미지" />
       <Detail>
         <Title> {name} </Title>
-        <ProductType type={categoryName} style={{ marginLeft: 0, bottom: 0 }} />
         <Price> {(discount || price).toLocaleString()}원 </Price>
       </Detail>
     </Page>

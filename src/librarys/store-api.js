@@ -656,7 +656,7 @@ export async function getFeaturedProduct(categoryId) {
 
   return {
     deadlineItems: list.slice(0, 3),
-    recentItems: list.slice(0, 3),
+    recentItems: list.slice(0, 5),
     popularItems: list.slice(0, 3),
   };
 }
