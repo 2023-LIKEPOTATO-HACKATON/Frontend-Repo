@@ -224,6 +224,7 @@ const Main = () => {
             <ProductSelect key={item.id} to={`/productDetail/${item.id}`}>
               <RecommemdProduct
                 name={item.name}
+                market={item.market}
                 category={item.category}
                 price={item.price}
                 discount={item.discount}

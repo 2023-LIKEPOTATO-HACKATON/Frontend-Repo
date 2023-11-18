@@ -28,28 +28,35 @@ const Detail = styled.div`
   color: rgba(21, 21, 21, 0.3);
 `;
 
+const MarketTitle = styled.p`
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #667080;
+`;
+
 const Title = styled.p`
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 22px;
   color: #151515;
 `;
 
 const Price = styled.p`
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 1000;
   line-height: 22px;
   color: #151515;
   margin: 20px 0 0 0;
 `;
 
-const RecommendList = ({ src, name,  price, discount }) => {
-
+const RecommendList = ({ src, name, market, price, discount }) => {
 
   return (
     <Page>
       <Image src={src} alt="상품이미지" />
       <Detail>
+        <MarketTitle> {market} </MarketTitle>
         <Title> {name} </Title>
         <Price> {(discount || price).toLocaleString()}원 </Price>
       </Detail>
