@@ -1,11 +1,8 @@
-import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ProfileImage from "../assets/images/profile.png";
-import Search from "../assets/images/search.png";
 import SimpleBar from "simplebar-react";
 import LogoImage from "../assets/images/logo.svg";
-
-import { show } from "../redux/menuSlice.js";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
@@ -88,39 +85,6 @@ const Image = styled.img`
   }
 `;
 
-const MenuContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-`;
-
-const MenuButton = styled(Link)`
-  width: 33.333%;
-  height: 48px;
-  border: none;
-  border-bottom: 1px solid rgba(102, 112, 128, 0.3);
-  background-color: transparent;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.25s;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background-color: #efefef;
-  }
-
-  &.selected {
-    color: rgba(217, 74, 86, 1);
-    border-bottom: 2px solid rgba(217, 74, 86, 1);
-    font-weight: 600;
-  }
-`;
-
 const Container = styled.div`
   max-width: 500px;
   height: calc(var(--vh) * 100);
@@ -159,7 +123,6 @@ function HeaderPage() {
         <TitleWrapper>
           <Logo src={LogoImage} />
           <ImageContainer>
-            <Image src={Search} alt="메뉴" onClick={() => dispatch(show())} />
             <Image
               src={ProfileImage}
               alt="프로필"
@@ -167,20 +130,6 @@ function HeaderPage() {
             />
           </ImageContainer>
         </TitleWrapper>
-        <MenuContainer>
-          <MenuButton to="/main" className={getSelected("/main")}>
-            HOME
-          </MenuButton>
-          <MenuButton
-            to="/account-book"
-            className={getSelected("/account-book")}
-          >
-            가계부
-          </MenuButton>
-          <MenuButton to="/my-pet" className={getSelected("/my-pet")}>
-            My Pet
-          </MenuButton>
-        </MenuContainer>
       </Header>
       <Content
         className={modalStatus ? "freeze" : null}
