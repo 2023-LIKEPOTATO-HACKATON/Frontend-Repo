@@ -1,8 +1,6 @@
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
-import TermsAgreement from "../../components/login/TermsAgreement.jsx";
 import EmailInput from "../../components/login/EmaiInput.jsx";
 import PasswordInputForm from "../../components/login/PasswordInputForm.jsx";
 import UserInfo from "../../components/login/UserInfo.jsx";
@@ -67,7 +65,7 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #d94a56;
+  background-color: #589E5B;
   color: white;
   text-align: center;
 
@@ -120,7 +118,6 @@ function SignupPage() {
       <DispatchContext.Provider value={dispatch}>
         <Container>
           <HeaderTitle url="/" title="회원가입" />
-          <TermsAgreement />
           <Label>이메일</Label>
           <EmailInput />
           <Label>비밀번호</Label>
