@@ -6,8 +6,6 @@ const Container = styled.div`
   padding: 64px 24px;
   min-height: calc(var(--vh) * 100);
 
-  background: linear-gradient(182deg, #f2b366 0%, #589E5B 37.5%), #fff;
-
   display: flex;
   flex-direction: column;
   align-items: center;
