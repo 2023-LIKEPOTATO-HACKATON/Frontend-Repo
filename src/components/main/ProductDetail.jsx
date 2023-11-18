@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
@@ -7,10 +7,6 @@ import Button from "../Button";
 import ProductOrder from "../product-detail/ProductOrder";
 
 import HeaderTitle from "../HeaderTitle.jsx";
-
-import SellerInfo from "./SellerInfo.jsx";
-
-import UpArrowImage from "../../assets/images/upArrow.png";
 
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
@@ -95,22 +91,6 @@ const Price = styled.p`
   line-height: 34.57px;
 `;
 
-const CostPrice = styled.p`
-  font-size: 13px;
-  font-weight: 400;
-  text-decoration: line-through;
-  letter-spacing: -0.02em;
-  color: rgba(21, 21, 21, 0.3);
-`;
-
-const DiscountAmount = styled.p`
-  margin-left: 7px;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: #f2b366;
-`;
-
 const GroupPurchaseContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -134,14 +114,6 @@ const GPTitle = styled.p`
   color: #151515;
 `;
 
-const GPTime = styled.p`
-  font-size: 12px;
-  font-weight: 400;
-  color: #d94a56;
-  line-height: 22px;
-  letter-spacing: -0.02em;
-`;
-
 const OrderBtn = styled(Button)`
   width: 100%;
   color: #ffffff;
@@ -150,7 +122,7 @@ const OrderBtn = styled(Button)`
   line-height: 22px;
   letter-spacing: -0.02em;
   text-align: center;
-  background-color: #d94a56;
+  background-color: #589e5b;
   border: none;
   box-shadow: none;
   margin-top: 5px;
@@ -179,109 +151,34 @@ const OverlayBackground = styled.div`
   width: 100%;
   background-color: #00000033;
 `;
-
-const SelectionContainer = styled.div`
-  margin-top: 20px;
+const SellerName = styled.p`
+  color: #667080;
+  font-size: 10px;
+  font-weight: 400;
+  text-align: right;
+  margin-bottom: 10px;
 `;
 
-const SelectionButton = styled.div`
-  width: 50%;
-  height: 48px;
-  border: none;
-  border-bottom: 1px solid rgba(102, 112, 128, 0.3);
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const ModifiedProductName = styled(ProductName)`
   font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  float: left;
-
-  &:hover {
-    background-color: #efefef;
-  }
-
-  &.select {
-    color: #d94a56;
-    border-bottom: 2px solid #d94a56;
-    font-weight: 600;
-  }
+  font-weight: 800;
 `;
 
-const PromotionalImage = styled(Image)`
-  aspect-ratio: auto;
-  min-height: 500px;
-`;
-
-const Notice = styled.div`
-  width: 100%;
-  height: auto;
-  padding: 20px 20px 0 25px;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const NoticeTitle = styled.p`
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 50px;
-  letter-spacing: -0.02em;
-  color: #000000;
-`;
-
-const NoticeContent = styled.p`
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 30px;
-  letter-spacing: -0.02em;
-  color: #000000;
-`;
-
-const NoticeModifiedDate = styled.p`
-  display: flex;
-  justify-content: end;
-  margin-top: 30px;
-  font-size: 14px;
-  font-weight: 400;
+const OriginalPrice = styled.p`
   color: #667080;
-`;
-
-const NoticeEditButton = styled.a`
-  margin-top: 4px;
-  margin-bottom: 8px;
-  border: none;
-  display: flex;
-  justify-content: flex-end;
-  text-decoration: underline;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 400;
-  color: #667080;
-  cursor: pointer;
 `;
 
-const ScrollToTopButton = styled.img`
-  width: 36px;
-  height: 36px;
-  padding: 8px;
-  position: fixed;
-  object-fit: contain;
-  bottom: 20px;
-  right: 20px;
-  border: none;
-  color: white;
-  background-color: #d94a56;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
+const FinalPrice = styled(Price)`
+  font-size: 16px;
+  font-weight: 800;
+`;
 
-  transition: opacity 0.1s;
-
-  &.hidden {
-    opacity: 0;
-  }
+const DiscountRate = styled(Percent)`
+  margin-left: 350px;
+  font-size: 16px;
+  color: #d94a56;
 `;
 
 const ProductDetail = () => {
@@ -291,8 +188,6 @@ const ProductDetail = () => {
   const [data, setData] = useState({});
   const [percent, setPercent] = useState(0);
   const [period, setPeriod] = useState("");
-
-  const [clickMenu, setClickMenu] = useState(false);
   const [openOrder, setOpenOrder] = useState(false);
   const { id } = useParams();
 
@@ -329,44 +224,9 @@ const ProductDetail = () => {
 
   const onClickOrder = () => setOpenOrder((prev) => !prev);
 
-  const ModifyDate = dayjs(data?.notice?.modifiedDate).format("YYYY-MM-DD");
-  const percentage = Math.round((data.currentPrice / data.goalPrice) * 100);
-
-  // 스크롤 버튼 구현 코드 영역
-  const [showScrollToTop, setShowScrollToTop] = useState(false);
-
-  const handleScroll = () => {
-    if (ref) {
-      if (ref.current.scrollTop > 200) {
-        setShowScrollToTop(true);
-      } else {
-        setShowScrollToTop(false);
-      }
-    }
-  };
-
-  useEffect(() => {
-    ref.current.addEventListener("scroll", handleScroll);
-  }, [ref]);
-
-  const scrollToTop = () => {
-    if (ref) {
-      ref.current.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  };
-
   function onImageClick() {
     if (isAdmin) {
       dispatch(show("upload_image"));
-    }
-  }
-
-  function onNoticeClick() {
-    if (isAdmin) {
-      dispatch(show("modify_notice"));
     }
   }
 
@@ -385,76 +245,22 @@ const ProductDetail = () => {
       )}
       <Image onClick={onImageClick} src={data.coverImage} alt="상품 이미지" />
       <ProductInfoContainer>
-        <ProductName> {data.name} </ProductName>
+        <SellerName>{data.seller}</SellerName>
+        <ModifiedProductName>{data.name}</ModifiedProductName>
+        <OriginalPrice>
+          정가 : {(data.price || 0).toLocaleString()}원
+        </OriginalPrice>
         <SubProductInfo>
-          <Percent style={{ display: percent > 0 ? null : "none" }}>
+          <FinalPrice>
+            {(data.discount || data.price || 0).toLocaleString()}원
+          </FinalPrice>
+          <DiscountRate style={{ display: percent > 0 ? null : "none" }}>
             {percent}%
-          </Percent>
-          <Price>
-            {" "}
-            {(data.discount || data.price || 0).toLocaleString()}원{" "}
-          </Price>
+          </DiscountRate>
         </SubProductInfo>
-        <SubProductInfo>
-          <CostPrice style={{ display: percent > 0 ? null : "none" }}>
-            {(data.price || 0).toLocaleString()}원
-          </CostPrice>
-          <DiscountAmount style={{ display: percent > 0 ? null : "none" }}>
-            할인금액 {(data.price - data.discount).toLocaleString()}원
-          </DiscountAmount>
-        </SubProductInfo>
-        <GroupPurchaseContainer>
-          <GPSubContainer>
-            <GPTitle> 공동구매 달성률 </GPTitle>
-            <GPTime> 공동구매 마감까지 {period} 남음 </GPTime>
-          </GPSubContainer>
-          <GPSubContainer>
-            <Percent> {percentage}% </Percent>
-            <GPTitle>
-              {" "}
-              {(data.users || 0).toLocaleString()}명이 참가했어요{" "}
-            </GPTitle>
-          </GPSubContainer>
-        </GroupPurchaseContainer>
         <OrderBtn onClick={onClickOrder}> 구매하기 </OrderBtn>
         {openOrder && <ProductOrder show={openOrder} />}
       </ProductInfoContainer>
-
-      <SelectionContainer>
-        <SelectionButton
-          className={`${clickMenu === false ? "select" : ""}`}
-          onClick={() => setClickMenu(false)}
-        >
-          정보
-        </SelectionButton>
-        <SelectionButton
-          className={`${clickMenu === true ? "select" : ""}`}
-          onClick={() => setClickMenu(true)}
-        >
-          공지사항
-        </SelectionButton>
-        {clickMenu ? (
-          <Notice>
-            <NoticeTitle> {data.notice.title} </NoticeTitle>
-            <NoticeContent> {data.notice.content} </NoticeContent>
-            <NoticeModifiedDate> 최근 수정일: {ModifyDate} </NoticeModifiedDate>
-            <NoticeEditButton
-              className={isAdmin ? null : "hidden"}
-              onClick={onNoticeClick}
-            >
-              편집하기
-            </NoticeEditButton>
-          </Notice>
-        ) : (
-          <PromotionalImage src={data.descriptionImage} />
-        )}
-      </SelectionContainer>
-      <SellerInfo />
-      <ScrollToTopButton
-        className={showScrollToTop ? null : "hidden"}
-        src={UpArrowImage}
-        onClick={scrollToTop}
-      />
     </Container>
   );
 };
