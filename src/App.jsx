@@ -27,6 +27,8 @@ import HeaderPage from "./pages/HeaderPage.jsx";
 import Main from "./pages/Main.jsx";
 import "./App.scss";
 import MyCreditPage from "./pages/MyCreditPage.jsx";
+import TakePicturePage from "./pages/TakePicturePage.jsx";
+import TakePictureCompelete from "./pages/TakePictureCompelete.jsx";
 
 const Container = styled.div`
   background-color: transparent;
@@ -45,6 +47,8 @@ const routerList = [
   { path: "/signup", element: <SignupPage /> },
   { path: "/compelete", element: <SignCompelete /> },
   { path: "/mycredit", element: <MyCreditPage/> },
+  { path: "/takephoto", element: <TakePicturePage/> },
+  { path: "/compelete", element: <TakePictureCompelete/> },
   { path: "/profile", element: <UserProfile />, role: 1 },
   {
     path: "/admin/store",
