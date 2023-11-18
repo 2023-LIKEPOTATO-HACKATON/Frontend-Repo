@@ -2,13 +2,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import LogoImage from "../assets/images/mainLogo.svg";
-import PetImage from "../assets/images/pet.png";
 
 const Container = styled.div`
   padding: 64px 24px;
   min-height: calc(var(--vh) * 100);
 
-  background: linear-gradient(182deg, #f2b366 0%, #f2d335 37.5%), #fff;
+  background: linear-gradient(182deg, #31422E 0%, #589E5B 37.5%), #fff;
 
   display: flex;
   flex-direction: column;
@@ -25,6 +24,7 @@ const Container = styled.div`
 const Background = styled.img`
   max-width: 500px;
   width: 100%;
+  color: #589E5B;
   bottom: 64px;
   padding: 0 min(10%, 50px);
   position: absolute;
@@ -46,17 +46,17 @@ const StyledButton = styled.button`
 `;
 
 const LoginButton = styled(StyledButton)`
-  background-color: rgba(217, 74, 86, 1);
+  background-color: #FFD02C;
   color: white;
 
   &:hover {
-    background-color: rgba(237, 88, 101, 1);
+    background-color: #FFD02C;
   }
 `;
 
 const SignupButton = styled(StyledButton)`
-  border: 1px solid #d94a56;
-  color: #d94a56;
+  border: 1px solid #FFD02C;
+  color: #FFD02C;
   background-color: #ffffff;
 
   &:hover {
@@ -84,7 +84,6 @@ function Home() {
   const navigate = useNavigate();
   return (
     <Container>
-      <Background src={PetImage} />
       <Title src={LogoImage} />
       <Subtitle>내 친구를 위한 현명한 소비</Subtitle>
       <Spacer />
