@@ -53,7 +53,7 @@ const routerList = [
   { path: "/compelete", element: <SignCompelete /> },
   { path: "/mycredit", element: <MyCreditPage/> },
   { path: "/takephoto", element: <TakePicturePage/> },
-  { path: "/compelete", element: <TakePictureCompelete/> },
+  { path: "/compeleteupload", element: <TakePictureCompelete/> },
   { path: "/profile", element: <UserProfile />, role: 1 },
   {
     path: "/admin/store",

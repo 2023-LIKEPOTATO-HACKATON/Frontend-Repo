@@ -157,6 +157,7 @@ const AmountValue = styled.p`
   margin-right: 60px;
   margin-bottom: 4px;
   font-weight: 400;
+  margin-top: -10px;
 `;
 
 const CreditCashTitle= styled.p`
@@ -174,6 +175,7 @@ const CreditCashValue= styled.p`
   text-align: right;
   margin-bottom: 4px;
   font-weight: 400;
+  margin-top: -10px;
 `;
  
 const CreditCheckTitle = styled.p`
@@ -201,7 +203,7 @@ function DoPurchase() {
 
   const [originalPrice, setOriginalPrice] = useState(0);
   const [discountAmount, setDiscountAmount] = useState(0);
-  const [finalPrice, setFinalPrice] = useState(0);
+  const [finalPrice, setFinalPrice] = useState(0); 
 
   useEffect(() => {
     (async () => {
@@ -243,27 +245,27 @@ function DoPurchase() {
       <ProductInfo>
         <ProductImage src={product.image} alt="Product" />
         <ProductName>{product.name}</ProductName>
-        <ProductPrice>{finalPrice.toLocaleString()}원</ProductPrice>
+        <ProductPrice>{discountAmount.toLocaleString()}원</ProductPrice>
       </ProductInfo>
       <Divider />
       <TotalAmount>총 상품 금액</TotalAmount>
-      <TotalAmountValue>{finalPrice.toLocaleString()}원</TotalAmountValue>
+      <TotalAmountValue>{discountAmount.toLocaleString()}원</TotalAmountValue>
       <PhoneNumberTitle>전화번호</PhoneNumberTitle>
       <PhoneNumberInput placeholder="전화번호를 입력하세요" />
       <AddTotalAmountTitle>합계 금액</AddTotalAmountTitle>
       <AmountTitle>원가</AmountTitle>
       <AmountValue>{originalPrice.toLocaleString()}원</AmountValue>
       <AmountTitle>할인 금액</AmountTitle>
-      <AmountValue>{discountAmount.toLocaleString()}원</AmountValue>
-      <AmountTitle>최종 결제 금액</AmountTitle>
       <AmountValue>{finalPrice.toLocaleString()}원</AmountValue>
+      <AmountTitle>최종 결제 금액</AmountTitle>
+      <AmountValue>{discountAmount.toLocaleString()}원</AmountValue>
       <CreditCheckTitle>최종 확인</CreditCheckTitle>
       <CreditCashTitle>결제 금액</CreditCashTitle>
-      <CreditCashValue>{finalPrice.toLocaleString()}원</CreditCashValue>
+      <CreditCashValue>{discountAmount.toLocaleString()}원</CreditCashValue>
       <CreditCashTitle>현재 크레딧</CreditCashTitle>
-      <CreditCashValue>원</CreditCashValue>
+      <CreditCashValue>13,040원</CreditCashValue>
       <CreditCashTitle>남은 크레딧</CreditCashTitle>
-      <CreditCashValue>원</CreditCashValue>
+      <CreditCashValue>7,740원</CreditCashValue>
       <InfoText>
         {"상품구매 후, 유효기간 연장 및 환불 불가 등\n구매시 유의 사항을 확인했으며, 정보 제공에 동의합니다."}
       </InfoText>

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import HeaderTitle from "../components/HeaderTitle.jsx";
 
 import SimpleBar from "simplebar-react";
+import { useNavigate } from "react-router-dom";
+
 
 const Container = styled(SimpleBar)`
   display: flex;
@@ -60,27 +62,36 @@ const CreditContainer = styled.div`
   width: 100%;
   height: 125px;
 `;
+
 const AdvantageTitle = styled.div`
   color: #151515;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 800;
+  margin-top: 10px;
+  margin-left: 0px;
 `;
+
 const AdvantageMoney = styled.div`
   color: #151515;
   font-size: 16px;
   font-weight: 800;
+  margin-right: 10px;
+  margin-top:10px;
 `;
 
 const AdvantageDate = styled.div`
   color: #667080;
   font-size: 10px;
   font-weight: 500;
+  margin-top: 10px;
 `;
 
 const AdvantageBeforeMoney = styled.div`
   color: #667080;
   font-size: 10px;
   font-weight: 500;
+  margin-right: 10px;
+  margin-top:10px;
 `;
 const CreditList = styled.div``;
 
@@ -109,6 +120,7 @@ const BottomBox = styled.button`
 
   transition: opacity 0.2s;
 `;
+
 const HeadText = styled.p`
   font-size: 16px;
   color: #294d23;
@@ -125,8 +137,8 @@ const CreditAmountContainer = styled.div`
 
 const CreditAmount = styled(Text)`
   margin-right: auto;
-  margin-top: 10px;
-  margin-left: 30px;
+  margin-top: 5px;
+  margin-left: 20px;
 `;
 
 const CreditCurrency = styled(Text)`
@@ -134,7 +146,82 @@ const CreditCurrency = styled(Text)`
   margin-right: 60px;
 `;
 
+const CreditListItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  max-height: 80px;
+`;
+
+const TopRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const BottomRow = styled(TopRow)`
+  color: #667080;
+  font-size: 10px;
+`;
+
+const creditData = [
+  {
+    title: "무료 음료 쿠폰 (벤티 사이즈)",
+    amount: "-5,300원",
+    date: "2023/11/18",
+    beforeAmount: "13,040원",
+  },
+  {
+    title: "분리배출 인증",
+    amount: "+500원",
+    date: "2023/11/17",
+    beforeAmount: "18,840원",
+  },
+  {
+    title: "분리배출 인증",
+    amount: "+500원",
+    date: "2023/11/16",
+    beforeAmount: "18,340원",
+  },
+  {
+    title: "분리배출 인증",
+    amount: "+500원",
+    date: "2023/11/15",
+    beforeAmount: "17,750원",
+  },
+  {
+    title: "분리배출 인증",
+    amount: "+500원",
+    date: "2023/11/12",
+    beforeAmount: "17,040원",
+  },
+  {
+    title: "분리배출 인증",
+    amount: "+500원",
+    date: "2023/11/10",
+    beforeAmount: "16,540원",
+  },
+  {
+    title: "분리배출 인증",
+    amount: "+500원",
+    date: "2023/11/09",
+    beforeAmount: "16,050원",
+  },
+  {
+    title: "분리배출 인증",
+    amount: "+500원",
+    date: "2023/11/02",
+    beforeAmount: "15,040원",
+  },
+];
+
 function MyCreditPage() {
+
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/takephoto');
+  };
+
   return (
     <Container>
       <HeaderTitle to="/userProfile" title="나의 크레딧" />
@@ -143,21 +230,27 @@ function MyCreditPage() {
           <TextContainer>
             <HeadText>지금 있는 크레딧</HeadText>
             <CreditAmountContainer>
-              <CreditAmount>10000</CreditAmount>
+              <CreditAmount>13,040</CreditAmount>
               <CreditCurrency>원</CreditCurrency>
             </CreditAmountContainer>
           </TextContainer>
         </Heading>
       </CreditContainer>
-      <CreditList>
-        <AdvantageTitle>무료 음료 쿠폰 (벤티 사이즈)</AdvantageTitle>
-        <AdvantageMoney>- 5,300원</AdvantageMoney>
-        <AdvantageDate>2023/11/18</AdvantageDate>
-        <AdvantageBeforeMoney>13,040원</AdvantageBeforeMoney>
-        <Divider />
-      </CreditList>
+      {creditData.map((item, index) => (
+        <CreditListItem key={index}>
+          <TopRow>
+            <AdvantageTitle>{item.title}</AdvantageTitle>
+            <AdvantageMoney>{item.amount}</AdvantageMoney>
+          </TopRow>
+          <BottomRow>
+            <AdvantageDate>{item.date}</AdvantageDate>
+            <AdvantageBeforeMoney>{item.beforeAmount}</AdvantageBeforeMoney>
+          </BottomRow>
+          {index < creditData.length - 1 && <Divider />}
+        </CreditListItem>
+      ))}
       <Spacer />
-      <BottomBox>분리배출 인증하기</BottomBox>
+      <BottomBox onClick={handleButtonClick}>분리배출 인증하기</BottomBox>
     </Container>
   );
 }

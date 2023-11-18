@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {  useRef ,useState } from 'react';
 import HeaderTitle from "../components/HeaderTitle.jsx";
+import { useNavigate } from "react-router-dom";
 
 import SimpleBar from "simplebar-react";
 
@@ -65,13 +66,13 @@ const VideoUploadBox = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  margin-left: 80px;
+  margin-left: 40px;
   cursor: pointer;
 `;
 
 const UploadGuide = styled.div`
   background-color: #589E5B;
-  margin-left: 80px;
+  margin-left: 40px;
   width: 350px;
   color: #FFFFFF;
   text-align: center;
@@ -102,12 +103,17 @@ const VideoPreview = styled.video`
 function TakePicturePage() {
   const [videoSrc, setVideoSrc] = useState('');
   const fileInputRef = useRef();
+  const navigate = useNavigate();
 
   const handleVideoChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setVideoSrc(URL.createObjectURL(file));
     }
+  };
+
+  const handleUploadClick = () => {
+    navigate('/compeleteupload');
   };
 
   const handleClick = () => {
@@ -130,7 +136,7 @@ function TakePicturePage() {
         <p>권장크기: 50MB 이하의 mp4, MOV, WMV, AVI, MKV만 가능</p>
       </UploadGuide>
       <Spacer />
-      <BottomBox>업로드하기</BottomBox>
+      <BottomBox onClick={handleUploadClick}>업로드하기</BottomBox>
     </Container>
   );
 }

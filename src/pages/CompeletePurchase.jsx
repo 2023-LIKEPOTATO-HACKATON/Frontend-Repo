@@ -88,6 +88,7 @@ const CreditCashValue= styled.p`
   text-align: right;
   margin-bottom: 4px;
   font-weight: 400;
+  margin-top: -10px;
 `;
  
 const CreditCheckTitle = styled.p`
@@ -103,7 +104,7 @@ function CompeletePurchase() {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const finalPrice = location.state?.finalPrice || 0;
+
 
   // "홈으로" 버튼 클릭 시 /main으로 이동
   const goToHome = () => {
@@ -120,9 +121,9 @@ function CompeletePurchase() {
       </InfoText>
       <CreditCheckTitle>최종 확인</CreditCheckTitle>
       <CreditCashTitle>결제 크레딧</CreditCashTitle>
-      <CreditCashValue>{finalPrice.toLocaleString()}원</CreditCashValue>
+      <CreditCashValue>5,300원</CreditCashValue>
       <CreditCashTitle>현재 크레딧</CreditCashTitle>
-      <CreditCashValue>원</CreditCashValue>
+      <CreditCashValue>7,740원</CreditCashValue>
       <Spacer />
       <BottomBox onClick={goToHome}>홈으로</BottomBox>
     </Container>

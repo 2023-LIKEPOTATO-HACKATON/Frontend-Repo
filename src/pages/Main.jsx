@@ -209,7 +209,7 @@ const Main = () => {
           <TextContainer>
             <HeadText>지금 있는 크레딧</HeadText>
             <CreditAmountContainer>
-              <CreditAmount>10000</CreditAmount>
+              <CreditAmount>13,040</CreditAmount>
               <CreditCurrency>원</CreditCurrency>
             </CreditAmountContainer>
           </TextContainer>

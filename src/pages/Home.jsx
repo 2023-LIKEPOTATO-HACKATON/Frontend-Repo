@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Image from "../assets/images/BB.png";
+import Image from "../assets/images/Final.png";
+import LogoImage from "../assets/images/mainlogo.png";
 
 const Container = styled.div`
   padding: 64px 24px;
@@ -56,6 +57,12 @@ const SignupButton = styled(StyledButton)`
 
 `;
 
+const Title = styled.img`
+  margin-top: 80px;
+  max-width: 360px;
+  width: 100%;
+`;
+
 const Spacer = styled.div`
   flex-grow: 1;
 `;
@@ -65,6 +72,7 @@ function Home() {
   return (
     <Container>
       <Background src={Image} />
+      <Title src={LogoImage} />
       <Spacer />
       <LoginButton onClick={() => navigate("/login")}>로그인</LoginButton>
       <SignupButton onClick={() => navigate("/signup")}>회원가입</SignupButton>
