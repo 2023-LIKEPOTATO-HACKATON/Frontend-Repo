@@ -96,7 +96,7 @@ const TotalAmount = styled.p`
   font-size: 13px;
   color: #667080;
   text-align: right;
-  margin-right: 410px;
+  margin-right: 340px;
 `;
 
 const TotalAmountValue = styled.p`
