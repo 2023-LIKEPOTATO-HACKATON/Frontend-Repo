@@ -37,7 +37,7 @@ const Text = styled.p`
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -1px;
-  color: #31422E;
+  color: #31422e;
 `;
 
 const Spacer = styled.div`
@@ -52,18 +52,16 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #589E5B;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
-  font-weight:800;
+  font-weight: 800;
 
   transition: opacity 0.2s;
 `;
 
-
 function TakePictureCompelete() {
-
   return (
     <Container>
       <HeaderTitle to="/userProfile" title="분리배출 인증하기" />

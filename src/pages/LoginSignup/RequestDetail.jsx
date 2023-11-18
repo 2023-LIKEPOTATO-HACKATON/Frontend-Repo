@@ -35,7 +35,6 @@ const Container = styled(SimpleBar)`
   }
 `;
 
-
 const Spacer = styled.div`
   flex-grow: 1;
 `;
@@ -48,11 +47,11 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #589E5B;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
-  font-weight:800;
+  font-weight: 800;
 
   transition: opacity 0.2s;
 `;
@@ -60,8 +59,8 @@ const BottomBox = styled.button`
 const VideoContainer = styled.div`
   width: 320px;
   height: 320px;
-  margin: 20px auto; 
-  background-color: #f0f0f0; 
+  margin: 20px auto;
+  background-color: #f0f0f0;
 `;
 
 const TitleText = styled.p`
@@ -77,7 +76,6 @@ const ContentText = styled.p`
   text-align: center;
 `;
 
-
 function RequestDetail() {
   const location = useLocation();
   const requestData = location.state?.requestData || {};
@@ -85,8 +83,7 @@ function RequestDetail() {
   return (
     <Container>
       <HeaderTitle to="/userProfile" title="인증 요청 보기" />
-      <VideoContainer>
-      </VideoContainer>
+      <VideoContainer></VideoContainer>
       {requestData.approved ? (
         <>
           <TitleText>크레딧 지급</TitleText>

@@ -53,7 +53,7 @@ const Price = styled.p`
 const DiscountRate = styled.p`
   font-size: 14px;
   font-weight: 800;
-  color: #D94A56;
+  color: #d94a56;
   margin-top: -15px;
   margin-left: 200px;
 `;
@@ -72,7 +72,12 @@ const RecommendList = ({ src, name, market, price, discount }) => {
       <Detail>
         <MarketTitle> {market} </MarketTitle>
         <Title> {name} </Title>
-        <Price> {discount ? `${discount.toLocaleString()}원` : `${price.toLocaleString()}원`} </Price>
+        <Price>
+          {" "}
+          {discount
+            ? `${discount.toLocaleString()}원`
+            : `${price.toLocaleString()}원`}{" "}
+        </Price>
         {discount ? <DiscountRate>-{discountRate}%</DiscountRate> : null}
       </Detail>
     </Page>

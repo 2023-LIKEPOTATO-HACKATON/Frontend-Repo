@@ -18,16 +18,8 @@ const BottomBox = styled(Link)`
   pointer-events: ${(props) => (props.active ? "auto" : "none")};
 `;
 
-
 function BottomForm() {
+  return <BottomBox to="/compelete">다음</BottomBox>;
+}
 
-  return(
-    <BottomBox
-        to="/compelete"
-      >
-        다음
-      </BottomBox>
-  )
-  }
-
-  export default BottomForm;
+export default BottomForm;

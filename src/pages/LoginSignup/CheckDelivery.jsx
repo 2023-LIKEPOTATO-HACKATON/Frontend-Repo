@@ -39,7 +39,7 @@ const Container = styled(SimpleBar)`
 
 const RequestItemContainer = styled.div`
   padding: 16px;
-  border-bottom: 1px solid #9B9B9B;
+  border-bottom: 1px solid #9b9b9b;
 `;
 
 const RequestInfo = styled.div`
@@ -57,9 +57,8 @@ const RequestCredit = styled(RequestInfo)`
 `;
 
 const RequestRejectionReason = styled(RequestInfo)`
-  color: #FF0000; 
+  color: #ff0000;
 `;
-
 
 const Spacer = styled.div`
   flex-grow: 1;
@@ -73,29 +72,28 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #589E5B;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
-  font-weight:800;
+  font-weight: 800;
 
   transition: opacity 0.2s;
 `;
-
 
 const dummyRequests = [
   {
     date: "2023-01-23 14:00",
     approved: true,
     credit: 500,
-    rejectionReason: null
+    rejectionReason: null,
   },
   {
     date: "2023-01-24 15:30",
     approved: false,
     credit: 0,
-    rejectionReason: "잘못된 분리배출"
-  }
+    rejectionReason: "잘못된 분리배출",
+  },
 ];
 
 function ChangeDelivery() {
@@ -104,25 +102,31 @@ function ChangeDelivery() {
   const navigate = useNavigate();
 
   const handleRequestClick = (request) => {
-    navigate(`/requestDetail/${request.date}`, { state: { requestData: request } });
+    navigate(`/requestDetail/${request.date}`, {
+      state: { requestData: request },
+    });
   };
-
 
   return (
     <Container>
       <HeaderTitle to="/userProfile" title="인증 요청 목록 조회" />
       {requests.map((request, index) => (
-        <RequestItemContainer key={index} onClick={() => handleRequestClick(request)}>
+        <RequestItemContainer
+          key={index}
+          onClick={() => handleRequestClick(request)}
+        >
           <RequestDate>{request.date}</RequestDate>
           {request.approved ? (
             <RequestCredit>{request.credit}원</RequestCredit>
           ) : (
-            <RequestRejectionReason>{request.rejectionReason}</RequestRejectionReason>
+            <RequestRejectionReason>
+              {request.rejectionReason}
+            </RequestRejectionReason>
           )}
         </RequestItemContainer>
       ))}
       <Spacer />
-      <BottomBox >분리배출 인증하기</BottomBox>
+      <BottomBox>분리배출 인증하기</BottomBox>
     </Container>
   );
 }

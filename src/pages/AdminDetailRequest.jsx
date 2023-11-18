@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 
 import HeaderTitle from "../components/HeaderTitle.jsx";
 import SimpleBar from "simplebar-react";
+import ImageSrc from "../assets/images/example.png";
 
 const Container = styled(SimpleBar)`
   display: flex;
@@ -35,7 +36,6 @@ const Container = styled(SimpleBar)`
   }
 `;
 
-
 const Spacer = styled.div`
   flex-grow: 1;
 `;
@@ -46,7 +46,7 @@ const BottomBox = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #589E5B;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
@@ -54,11 +54,13 @@ const BottomBox = styled.button`
   transition: opacity 0.2s;
 `;
 
-const VideoContainer = styled.div`
+const ImageContainer = styled.div`
   width: 320px;
   height: 320px;
-  margin: 20px auto; 
-  background-color: #f0f0f0; 
+  margin: 20px auto;
+  background-image: url(${ImageSrc});
+  background-size: cover; // This ensures the image covers the whole div
+  background-position: center; // This centers the image in the div
 `;
 
 const TitleText = styled.p`
@@ -92,37 +94,34 @@ const ActionButton = styled.button`
 `;
 
 const ApproveButton = styled(ActionButton)`
-  background-color: #31422E;
+  background-color: #31422e;
   color: #ffffff;
 `;
 
 const RejectButton = styled(ActionButton)`
   background-color: #ffffff;
-  border: 1px solid #31422E;
-  color: #31422E;
+  border: 1px solid #31422e;
+  color: #31422e;
 `;
 
 const RejectionInput = styled.input`
   width: 370px;
   height: 40px;
   border-radius: 5px;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border: 1px solid #ccc;
   margin-top: 10px;
   margin-left: 20px;
 `;
 
-
-
 function AdminDetailRequest() {
   const location = useLocation();
   const requestData = location.state?.requestData || {};
 
-
   return (
     <Container>
       <HeaderTitle to="/userProfile" title="인증 요청 보기" />
-      <VideoContainer />
+      <ImageContainer />
       <TitleText>크레딧 지급</TitleText>
       <ButtonContainer>
         <ApproveButton>승인</ApproveButton>

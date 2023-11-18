@@ -155,7 +155,7 @@ const FinalPrice = styled(Price)`
 
 const DiscountRate = styled(Percent)`
   font-size: 14px;
-  color: #D94A56;
+  color: #d94a56;
   margin-top: -5px;
   margin-left: 270px;
 `;
@@ -210,9 +210,9 @@ const ProductDetail = () => {
 
   const navigate = useNavigate();
 
-const onClickOrder = () => {
-  navigate(`/purchase/${id}`);
-};
+  const onClickOrder = () => {
+    navigate(`/purchase/${id}`);
+  };
 
   function onImageClick() {
     if (isAdmin) {
@@ -245,11 +245,7 @@ const onClickOrder = () => {
           <FinalPrice>
             {(data.discount || data.price || 0).toLocaleString()}원
           </FinalPrice>
-          {percent > 0 && (
-            <DiscountRate>
-              -{percent}%
-            </DiscountRate>
-          )}
+          {percent > 0 && <DiscountRate>-{percent}%</DiscountRate>}
         </SubProductInfo>
         <OrderBtn onClick={onClickOrder}> 구매하기 </OrderBtn>
         {openOrder && <ProductOrder show={openOrder} />}

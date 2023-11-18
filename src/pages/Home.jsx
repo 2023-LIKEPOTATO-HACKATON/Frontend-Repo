@@ -24,7 +24,7 @@ const Background = styled.img`
   max-height: 1024px;
   margin-bottom: -60px;
   width: 100%;
-  color: #589E5B;
+  color: #589e5b;
   bottom: 64px;
   padding: 0 min(10%, 50px);
   position: absolute;
@@ -46,15 +46,14 @@ const StyledButton = styled.button`
 `;
 
 const LoginButton = styled(StyledButton)`
-  background-color: #FFD02C;
+  background-color: #ffd02c;
   color: white;
 `;
 
 const SignupButton = styled(StyledButton)`
-  border: 1px solid #FFD02C;
-  color: #FFD02C;
+  border: 1px solid #ffd02c;
+  color: #ffd02c;
   background-color: #ffffff;
-
 `;
 
 const Title = styled.img`

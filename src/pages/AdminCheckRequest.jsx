@@ -5,7 +5,6 @@ import { useState } from "react";
 import HeaderTitle from "../components/HeaderTitle.jsx";
 import SimpleBar from "simplebar-react";
 
-
 const Container = styled(SimpleBar)`
   display: flex;
   flex-direction: column;
@@ -38,7 +37,7 @@ const Container = styled(SimpleBar)`
 
 const RequestItemContainer = styled.div`
   padding: 16px;
-  border-bottom: 1px solid #9B9B9B;
+  border-bottom: 1px solid #9b9b9b;
 `;
 
 const RequestInfo = styled.div`
@@ -50,8 +49,6 @@ const RequestInfo = styled.div`
 const RequestDate = styled(RequestInfo)`
   font-weight: bold;
 `;
-
-
 
 const Spacer = styled.div`
   flex-grow: 1;
@@ -65,11 +62,11 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #589E5B;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
-  font-weight:800;
+  font-weight: 800;
 
   transition: opacity 0.2s;
 `;
@@ -77,25 +74,24 @@ const BottomBox = styled.button`
 const dummyRequests = [
   {
     date: "2023-01-23 14:00",
-    status: "지급 완료"
+    status: "지급 완료",
   },
   {
     date: "2023-01-24 15:30",
-    status: "검토 필요"
+    status: "검토 필요",
   },
   {
     date: "2023-01-25 16:45",
-    status: "잘못된 분리배출"
-  }
+    status: "잘못된 분리배출",
+  },
 ];
 
-
 const RequestStatus = styled(RequestInfo)`
-  color: ${({ statusColor }) => statusColor}; 
+  color: ${({ statusColor }) => statusColor};
 `;
 
 const getStatusColor = (status) => {
-  switch(status) {
+  switch (status) {
     case "지급 완료":
       return "green";
     case "검토 필요":
@@ -107,22 +103,25 @@ const getStatusColor = (status) => {
   }
 };
 
-
-
 function AdminCheckRequest() {
   const { requestId } = useParams();
   const [requests, setRequests] = useState(dummyRequests);
   const navigate = useNavigate();
 
   const handleRequestClick = (request) => {
-    navigate(`/admindetailrequest/${request.date}`, { state: { requestData: request } });
+    navigate(`/admindetailrequest/${request.date}`, {
+      state: { requestData: request },
+    });
   };
 
   return (
     <Container>
       <HeaderTitle to="/userProfile" title="인증 요청 목록 조회" />
       {requests.map((request, index) => (
-        <RequestItemContainer key={index} onClick={() => handleRequestClick(request)}>
+        <RequestItemContainer
+          key={index}
+          onClick={() => handleRequestClick(request)}
+        >
           <RequestDate>{request.date}</RequestDate>
           <RequestStatus statusColor={getStatusColor(request.status)}>
             {request.status}

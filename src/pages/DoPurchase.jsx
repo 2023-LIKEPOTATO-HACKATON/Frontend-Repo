@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import SimpleBar from "simplebar-react";
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getProduct } from '../librarys/store-api';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getProduct } from "../librarys/store-api";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled(SimpleBar)`
   display: flex;
@@ -47,11 +47,11 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #589E5B;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
-  font-weight:800;
+  font-weight: 800;
 
   transition: opacity 0.2s;
 `;
@@ -117,7 +117,7 @@ const PhoneNumberTitle = styled.p`
 `;
 
 const PhoneNumberInput = styled.input`
-  background-color: #F6F4F2;
+  background-color: #f6f4f2;
   width: 363px;
   height: 40px;
   border: none;
@@ -160,7 +160,7 @@ const AmountValue = styled.p`
   margin-top: -10px;
 `;
 
-const CreditCashTitle= styled.p`
+const CreditCashTitle = styled.p`
   font-size: 14px;
   color: #151515;
   margin-left: 60px;
@@ -168,7 +168,7 @@ const CreditCashTitle= styled.p`
   font-weight: 400;
 `;
 
-const CreditCashValue= styled.p`
+const CreditCashValue = styled.p`
   font-size: 14px;
   color: #151515;
   margin-right: 60px;
@@ -177,7 +177,7 @@ const CreditCashValue= styled.p`
   font-weight: 400;
   margin-top: -10px;
 `;
- 
+
 const CreditCheckTitle = styled.p`
   font-size: 16px;
   color: #151515;
@@ -187,13 +187,13 @@ const CreditCheckTitle = styled.p`
   margin-bottom: 20px;
 `;
 
-const InfoText= styled.p`
+const InfoText = styled.p`
   font-size: 14px;
   color: #151515;
   text-align: center;
   font-weight: 400;
   margin-top: 30px;
-  white-space: pre-wrap; 
+  white-space: pre-wrap;
 `;
 
 function DoPurchase() {
@@ -203,7 +203,7 @@ function DoPurchase() {
 
   const [originalPrice, setOriginalPrice] = useState(0);
   const [discountAmount, setDiscountAmount] = useState(0);
-  const [finalPrice, setFinalPrice] = useState(0); 
+  const [finalPrice, setFinalPrice] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -214,8 +214,8 @@ function DoPurchase() {
             name: data.name,
             image: data.coverImage,
             price: data.discount || data.price,
-            totalPrice: data.price, 
-          });          
+            totalPrice: data.price,
+          });
           const original = data.price;
           const discount = data.discount;
           const final = original - discount;
@@ -267,7 +267,9 @@ function DoPurchase() {
       <CreditCashTitle>남은 크레딧</CreditCashTitle>
       <CreditCashValue>7,740원</CreditCashValue>
       <InfoText>
-        {"상품구매 후, 유효기간 연장 및 환불 불가 등\n구매시 유의 사항을 확인했으며, 정보 제공에 동의합니다."}
+        {
+          "상품구매 후, 유효기간 연장 및 환불 불가 등\n구매시 유의 사항을 확인했으며, 정보 제공에 동의합니다."
+        }
       </InfoText>
       <Spacer />
       <BottomBox onClick={handlePayment}>결제하기</BottomBox>

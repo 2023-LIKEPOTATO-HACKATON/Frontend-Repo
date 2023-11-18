@@ -5,7 +5,6 @@ import HeaderTitle from "../components/HeaderTitle.jsx";
 import SimpleBar from "simplebar-react";
 import { useNavigate } from "react-router-dom";
 
-
 const Container = styled(SimpleBar)`
   display: flex;
   flex-direction: column;
@@ -76,7 +75,7 @@ const AdvantageMoney = styled.div`
   font-size: 16px;
   font-weight: 800;
   margin-right: 10px;
-  margin-top:10px;
+  margin-top: 10px;
 `;
 
 const AdvantageDate = styled.div`
@@ -91,7 +90,7 @@ const AdvantageBeforeMoney = styled.div`
   font-size: 10px;
   font-weight: 500;
   margin-right: 10px;
-  margin-top:10px;
+  margin-top: 10px;
 `;
 const CreditList = styled.div``;
 
@@ -215,11 +214,10 @@ const creditData = [
 ];
 
 function MyCreditPage() {
-
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate('/takephoto');
+    navigate("/takephoto");
   };
 
   return (

@@ -87,7 +87,6 @@ const Image = styled.img`
   }
 `;
 
-
 const Container = styled.div`
   max-width: 500px;
   height: calc(var(--vh) * 100);

@@ -11,7 +11,7 @@ const Overlay = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 2;
-  display: ${(props) => (props.show ? 'block' : 'none')};
+  display: ${(props) => (props.show ? "block" : "none")};
 `;
 
 const PopupBox = styled.div`
@@ -24,7 +24,7 @@ const PopupBox = styled.div`
   padding: 20px;
   box-sizing: border-box;
   margin-left: -50px;
-  display: ${(props) => (props.show ? 'block' : 'none')};
+  display: ${(props) => (props.show ? "block" : "none")};
 `;
 
 const XButtonImage = styled.img`
@@ -39,17 +39,17 @@ const Popup = ({ showPopup, handleClose, children }) => {
     <>
       <Overlay show={showPopup} onClick={handleClose} />
       <PopupBox show={showPopup}>
-        <XButtonImage src={XButton} alt="Close" onClick={handleClose} /> 
+        <XButtonImage src={XButton} alt="Close" onClick={handleClose} />
         {children}
       </PopupBox>
     </>
   );
-}
+};
 
 Popup.propTypes = {
   showPopup: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Popup;

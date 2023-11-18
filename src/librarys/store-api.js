@@ -47,8 +47,8 @@ const productList = [
     id: 2,
     name: "스트로베리 초콜릿 프라페(L)",
     market: "투썸플레이스",
-    thumbnailImage:  Strawberry,
-    coverImage:  Strawberry,
+    thumbnailImage: Strawberry,
+    coverImage: Strawberry,
     category: 1001,
     price: 6600,
     discount: 6000,
@@ -56,7 +56,6 @@ const productList = [
     endDate: "2023-08-24T00:00:00+09:00",
     notice: {
       title: "스트로베리 초콜릿 프라페(L)",
-
     },
     options: [
       {

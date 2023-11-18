@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {  useRef ,useState } from 'react';
+import { useRef, useState } from "react";
 import HeaderTitle from "../components/HeaderTitle.jsx";
 import { useNavigate } from "react-router-dom";
 
@@ -47,11 +47,11 @@ const BottomBox = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #589E5B;
+  background-color: #589e5b;
   color: white;
   text-align: center;
   cursor: pointer;
-  font-weight:800;
+  font-weight: 800;
 
   transition: opacity 0.2s;
 `;
@@ -60,7 +60,7 @@ const VideoUploadBox = styled.div`
   margin: 20px;
   width: 350px;
   height: 350px;
-  background-color: #F6F4F2;
+  background-color: #f6f4f2;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -71,10 +71,10 @@ const VideoUploadBox = styled.div`
 `;
 
 const UploadGuide = styled.div`
-  background-color: #589E5B;
+  background-color: #589e5b;
   margin-left: 40px;
   width: 350px;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   padding: 15px 0;
   font-size: 12px;
@@ -101,7 +101,7 @@ const VideoPreview = styled.video`
 `;
 
 function TakePicturePage() {
-  const [videoSrc, setVideoSrc] = useState('');
+  const [videoSrc, setVideoSrc] = useState("");
   const fileInputRef = useRef();
   const navigate = useNavigate();
 
@@ -113,7 +113,7 @@ function TakePicturePage() {
   };
 
   const handleUploadClick = () => {
-    navigate('/compeleteupload');
+    navigate("/compeleteupload");
   };
 
   const handleClick = () => {
@@ -129,7 +129,12 @@ function TakePicturePage() {
         ) : (
           "영상을 업로드하세요"
         )}
-        <HiddenFileInput type="file" accept="video/*" onChange={handleVideoChange} ref={fileInputRef} />
+        <HiddenFileInput
+          type="file"
+          accept="video/*"
+          onChange={handleVideoChange}
+          ref={fileInputRef}
+        />
       </VideoUploadBox>
       <UploadGuide>
         <p>영상 업로드</p>
