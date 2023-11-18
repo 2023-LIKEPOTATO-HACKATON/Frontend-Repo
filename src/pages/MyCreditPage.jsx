@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HeaderTitle from "../components/HeaderTitle.jsx";
 
 import SimpleBar from "simplebar-react";
-import { useNavigate,useEffect, useState } from "react-router-dom";
+import { useNavigate, useEffect, useState } from "react-router-dom";
 import { getCreditList, getMyCreditTotal } from "../librarys/credit-api.js";
 
 const Container = styled(SimpleBar)`
@@ -170,7 +170,7 @@ function MyCreditPage() {
   };
 
   const [creditList, setCreditList] = useState([]);
-  const [creditTotal, setCreditTotal] = useState(0); 
+  const [creditTotal, setCreditTotal] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -186,7 +186,7 @@ function MyCreditPage() {
         setCreditTotal(creditAmount);
       }
     })();
-  }, []); 
+  }, []);
 
   return (
     <Container>
@@ -196,7 +196,7 @@ function MyCreditPage() {
           <TextContainer>
             <HeadText>지금 있는 크레딧</HeadText>
             <CreditAmountContainer>
-            <CreditAmount>{creditTotal.toLocaleString()}</CreditAmount> 
+              <CreditAmount>{creditTotal.toLocaleString()}</CreditAmount>
               <CreditCurrency>원</CreditCurrency>
             </CreditAmountContainer>
           </TextContainer>

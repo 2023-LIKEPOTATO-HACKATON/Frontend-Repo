@@ -45,7 +45,7 @@ const routerList = [
   { path: "/takephoto", element: <TakePicturePage /> },
   { path: "/compeleteupload", element: <TakePictureCompelete /> },
   { path: "/profile", element: <UserProfile />, role: 1 },
-  
+
   { path: "/checkdelivery", element: <CheckDelivery />, role: 1 },
   { path: "/productDetail/:id", element: <ProductDetail />, role: 1 },
   { path: "/purchase/:id", element: <DoPurchase />, role: 1 },

@@ -162,7 +162,7 @@ const Main = () => {
   const [categoryId, setCategoryId] = useState();
   const [showModal, setShowModal] = useState(true);
 
-  const [creditTotal, setCreditTotal] = useState(0); 
+  const [creditTotal, setCreditTotal] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -171,7 +171,7 @@ const Main = () => {
         setCreditTotal(creditAmount);
       }
     })();
-  }, []); 
+  }, []);
 
   const recentFilteredProducts =
     categoryId !== undefined
@@ -221,7 +221,7 @@ const Main = () => {
           <TextContainer>
             <HeadText>지금 있는 크레딧</HeadText>
             <CreditAmountContainer>
-            <CreditAmount>{creditTotal.toLocaleString()}</CreditAmount> 
+              <CreditAmount>{creditTotal.toLocaleString()}</CreditAmount>
               <CreditCurrency>원</CreditCurrency>
             </CreditAmountContainer>
           </TextContainer>

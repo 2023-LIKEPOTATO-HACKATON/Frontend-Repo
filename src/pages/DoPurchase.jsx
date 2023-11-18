@@ -236,8 +236,10 @@ function DoPurchase() {
 
   const handlePayment = async () => {
     const response = await purchaseProduct(id, mid);
-    if (response === 'success') {
-      navigate(`/compeletepurchase/${id}`, { state: { finalPrice: finalPrice } });
+    if (response === "success") {
+      navigate(`/compeletepurchase/${id}`, {
+        state: { finalPrice: finalPrice },
+      });
     } else {
     }
   };
